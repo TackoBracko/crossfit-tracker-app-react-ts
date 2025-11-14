@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary-background: #1c1c1e;
+  --primary-background-btn: #d0fd3e;
+  --primary-text: #ffffff;
+  --primary-btn-hover: #c1f519;
+  --secondary-background-btn: #2c2c2c;
+  --secondary-text: #d0fd3e;
+  --secondary-btn-hover: #0f0f0f;
+  --tertiary-text: #000000;
+  --tertiary-btn-text: #ff2424;
+  --span-background: #d0fd3e;
+
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-base: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+  --font-2xl: 24px;
+  --font-3xl: 30px;
+  --font-4xl: 32px;
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  --border-b: 1px solid #2c2c2e;
+  --border-t: 1px solid #2c2c2e;
+  --rounded-sm: 4px;
+  --rounded-lg: 8px;
+  --rounded-xl: 12px;
+  --rounded-2xl: 50px;
+  --rounded-3xl: 50%;
+
+  --p-xs: 10px;
+  --p-sm: 12px;
+  --p-base: 16px;
+  --p-lg: 20px;
+  --p-xl: 24px;
+  --p-gap: 32px 24px;
+  --p-forma: 0 24px;
+  --p-btn: 14px 20px;
+  --p-btn-2: 20px 0;
+  --p-exercise: 16px 8px;
+  --p-small: 6px 12px;
+
+  --m-xs: 10px;
+  --m-sm: 20px;
+  --m-base: 24px;
+  --m-lg: 32px;
+  --m-xl: 70px;
+  --m-2xl: 80px;
+
+  --gap-xs: 8px;
+  --gap-sm: 10px;
+  --gap-lg: 20px;
+  --gap-xl: 70px;
+}
+
+@font-face {
+  font-family: "MyFont";
+  src: url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap/myfont.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--primary-background);
+  color: var(--primary-text);
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300 - 700;
+  font-style: normal;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: var(--primary-text);
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-text);
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
