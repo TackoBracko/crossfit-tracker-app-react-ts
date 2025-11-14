@@ -1,0 +1,62 @@
+.signupHeader {
+  background-image: url("./../../assets/AppPictures/SignupBackground.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 387px;
+  color: var(--primary-text);
+  text-transform: uppercase;
+  padding: var(--p-xl);
+  gap: var(--gap-sm);
+}
+
+.signupHeader h3 {
+  font-size: var(--font-3xl);
+  font-weight: var(--font-normal);
+}
+
+.signupHeader h3 span {
+  font-weight: var(--font-bold);
+}
+
+.signupHeader p {
+  font-size: var(--font-xs);
+  font-weight: var(--font-normal);
+}
+
+.signupFormSection {
+  padding: var(--p-forma);
+  max-width: 100%;
+  margin-top: var(--m-lg);
+}
+
+.signupFormSection form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  margin-bottom: var(--m-base);
+}
+
+.errorText {
+  position: absolute;
+  color: var(--tertiary-btn-text);
+  padding-left: var(--p-base);
+  font-weight: var(--font-normal);
+  font-size: var(--font-xs);
+}
+
+@media (min-width: 768px) {
+  .loginHeader {
+    background-position: top center;
+    height: 620px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .loginHeader {
+    background-position: top center;
+    height: 700px;
+  }
+}
