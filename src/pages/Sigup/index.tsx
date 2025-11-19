@@ -45,10 +45,8 @@ export default function Signup() {
   return (
     <>
       <header className={classes.signupHeader}>
-        <h3>
-          Hello <span>new Member</span>
-        </h3>
-        <p>Enter your informations below or login </p>
+        <h3>Welcom!</h3>
+        <p>Get started by creating your profile</p>
       </header>
 
       <section className={classes.signupFormSection}>

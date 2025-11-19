@@ -1,0 +1,66 @@
+.setupHeader {
+  display: flex;
+  flex-direction: column;
+  padding: var(--p-gap);
+  margin-bottom: var(--m-base);
+  gap: var(--gap-sm);
+}
+
+.setupHeader h2 {
+  font-size: var(--font-xl);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  color: var(--secondary-text);
+}
+
+.setupHeader p {
+  font-size: var(--font-sm);
+  font-weight: var(--font-normal);
+  color: var(--primary-text);
+  text-transform: uppercase;
+}
+
+.setupSection {
+  padding: var(--p-gap);
+}
+
+.setupInput {
+  margin-bottom: var(--m-sm);
+  margin-top: var(--m-xs);
+}
+
+.unitDiv {
+  display: flex;
+  position: relative;
+}
+
+.unitDiv input {
+  width: 100%;
+  padding-right: 50px;
+}
+
+.unit {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  font-size: var(--font-xs);
+  font-weight: var(--font-medium);
+  border: 1px solid;
+  border-radius: var(--rounded-xl);
+  background-color: #d0fd3e;
+  color: var(--tertiary-text);
+  padding: 4px;
+}
+
+.genderSelection {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.errorText {
+  color: var(--tertiary-btn-text);
+  font-weight: var(--font-normal);
+  font-size: var(--font-base);
+  text-align: center;
+}
