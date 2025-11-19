@@ -1,9 +1,9 @@
-//import React from 'react'
 import classes from "./Login.module.css";
 import { Form, useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../components/Context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -13,6 +13,7 @@ export default function Login() {
     password: false,
   });
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,8 +29,9 @@ export default function Login() {
 
       return;
     }
-    console.log("Login succseful");
 
+    console.log("Login succseful");
+    login();
     navigate("/");
   };
 
