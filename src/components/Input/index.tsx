@@ -4,11 +4,11 @@ import classes from "./Input.module.css";
 type InputProps = {
   name: string;
   label?: string;
-  placeholder: string;
+  placeholder?: string;
   type: string;
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string | number;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string | number;
   error?: string;
 };
 
