@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
 import classes from "./Navigation.module.css";
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 
 export default function Navigation() {
-  const [isUserLogged] = useState(false);
-
+  const { isUserLogged } = useContext(AuthContext);
   return (
     <header
       className={
@@ -23,7 +23,47 @@ export default function Navigation() {
                   isActive ? classes.active : undefined
                 }
               >
-                Home
+                H
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to=""
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                C
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to=""
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                M
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to=""
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                C
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to=""
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                P
               </NavLink>
             </li>
           </ul>

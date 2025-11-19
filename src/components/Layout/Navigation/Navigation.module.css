@@ -32,12 +32,11 @@
 .loggedNav {
   height: 100%;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  gap: var(--gap-xs);
 }
 
 .loggedNav li a {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 50px;
