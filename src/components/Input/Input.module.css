@@ -1,0 +1,61 @@
+.inputBase {
+  position: relative;
+  color: var(--primary-text);
+  background-color: transparent;
+  border: none;
+  border-bottom: var(--border-b);
+  outline: none;
+  width: 100%;
+  font-size: var(--font-base);
+  font-weight: var(--font-medium);
+  padding: var(--p-base);
+  transition: border-color 0.2sec;
+}
+
+::placeholder {
+  font-weight: var(--font-normal);
+  font-size: var(--font-sm);
+  color: var(--primary-text);
+}
+
+label {
+  display: block;
+  font-size: var(--font-sm);
+  color: var(--secondary-text);
+  /*padding-left: var(--p-base);*/
+  margin-bottom: var(--m-xs);
+}
+
+.errorText {
+  position: absolute;
+  color: var(--tertiary-btn-text);
+  padding-left: var(--p-base);
+  font-weight: var(--font-normal);
+  font-size: var(--font-xs);
+}
+
+.inputError {
+  border-bottom-color: red;
+}
+
+.inputForModal {
+  width: 100%;
+  padding: var(--p-base);
+  margin-bottom: var(--p-sm);
+  border: 2px solid #ccc;
+  border-radius: var(--rounded-lg);
+  background: var(--primary-text);
+  color: var(--tertiary-text);
+}
+
+/*.inputForMealSearch {
+  width: 100%;
+  border: 1px solid #2c2c2e;
+  color: var(--primary-text);
+  border-radius: var(--rounded-xl);
+  outline: none;
+}
+
+.inputForMealSearch::placeholder {
+  font-size: var(--font-sm);
+}*/
