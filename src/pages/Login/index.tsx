@@ -4,6 +4,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../components/Context/AuthContext";
+import { UserDataContext } from "../../components/Context/UserContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,7 @@ export default function Login() {
   });
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const { user } = useContext(UserDataContext);
 
   const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,7 +47,7 @@ export default function Login() {
     <>
       <header className={classes.loginHeader}>
         <h3>
-          Welcom back <span></span>
+          Welcom back <span>{user?.name}</span>
         </h3>
       </header>
 
