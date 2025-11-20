@@ -12,6 +12,7 @@ import Onbording from "./pages/Sigup/Onbording";
 import Layout from "./components/Layout";
 import { AuthProvider } from "./components/Context/AuthContext";
 import { ProtectedRoutes, PublicRoutes } from "./components/Context/AuthRoutes";
+import { UserDataProvider } from "./components/Context/UserContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,7 +38,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+      <UserDataProvider>
+        <RouterProvider router={router} />
+      </UserDataProvider>
     </AuthProvider>
   );
 }
