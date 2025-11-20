@@ -15,7 +15,7 @@ type UserDataProps = {
 
 type UserContextType = {
   user: UserDataProps | null;
-  handleUserData: (data: UserDataProps) => void;
+  handleUserData: (data: Partial<UserDataProps>) => void;
 };
 
 export const UserDataContext = React.createContext<UserContextType>({
@@ -26,7 +26,11 @@ export const UserDataContext = React.createContext<UserContextType>({
 export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [user, handleUserData] = useState<UserDataProps | null>(null);
+  const [user, setUser] = useState<UserDataProps | null>(null);
+
+  const handleUserData = (data: Partial<UserDataProps>) => {
+    setUser((prev) => ({ ...prev, ...data }));
+  };
 
   return (
     <UserDataContext.Provider value={{ user, handleUserData }}>

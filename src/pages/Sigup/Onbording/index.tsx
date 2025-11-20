@@ -1,10 +1,71 @@
 //import React from 'react'
 import classes from "./Onbording.module.css";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
+import { useContext, useState } from "react";
+import { UserDataContext } from "../../../components/Context/UserContext";
+import { AuthContext } from "../../../components/Context/AuthContext";
 
 export default function Onbording() {
+  const { user, handleUserData } = useContext(UserDataContext);
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const [userSetupInfo, setUserSetupInfo] = useState({
+    name: user?.name,
+    birthday: user?.birthday,
+    weight: user?.weight,
+    height: user?.height,
+    gender: user?.gender,
+    age: user?.age,
+  });
+
+  const [setupInfoError, setSetupInfoError] = useState(false);
+
+  const handleSetupInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserSetupInfo((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleGender = (gender: string) => {
+    setUserSetupInfo((prev) => {
+      return { ...prev, gender };
+    });
+  };
+
+  const handleAge = (birthday: string) => {
+    const age = Date.now() - new Date(birthday).getTime();
+    return Math.floor(age / (365.25 * 224 * 60 * 60 * 1000));
+  };
+
+  const handleSetupInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (
+      !userSetupInfo.name ||
+      !userSetupInfo.birthday ||
+      !userSetupInfo.weight ||
+      !userSetupInfo.height ||
+      !userSetupInfo.gender
+    ) {
+      setSetupInfoError(true);
+      return;
+    }
+
+    const user = {
+      ...userSetupInfo,
+      age: handleAge(userSetupInfo.birthday),
+    };
+
+    handleUserData(user);
+    console.log(userSetupInfo);
+    login();
+    navigate("/");
+  };
+
   return (
     <>
       <header className={classes.setupHeader}>
@@ -13,16 +74,16 @@ export default function Onbording() {
       </header>
 
       <section className={classes.setupSection}>
-        <Form>
-          {/*{setupInfoError ? <p>Please fill out all fields</p> : null}*/}
+        <Form onSubmit={handleSetupInfoSubmit}>
+          {setupInfoError ? <p>Please fill out all fields</p> : null}
 
           <div className={classes.setupInput}>
             <Input
               label="Your name"
               name="name"
               type="text"
-              //value={}
-              //onChange={}
+              value={userSetupInfo.name}
+              onChange={handleSetupInfo}
             />
           </div>
 
@@ -31,8 +92,8 @@ export default function Onbording() {
               label="Birthday"
               name="birthday"
               type="date"
-              //value={}
-              //onChange={}
+              value={userSetupInfo.birthday}
+              onChange={handleSetupInfo}
             />
           </div>
 
@@ -40,11 +101,21 @@ export default function Onbording() {
             <label>Gender</label>
             <div className={classes.genderSelection}>
               <label className={classes.genderOption}>
-                <input type="radio" name="gender" value="Male" />
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Male"
+                  onClick={() => handleGender("Male")}
+                />
                 Male
               </label>
               <label className={classes.genderOption}>
-                <input type="radio" name="gender" value="Female" />
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Female"
+                  onClick={() => handleGender("Female")}
+                />
                 Female
               </label>
             </div>
@@ -57,8 +128,8 @@ export default function Onbording() {
                 type="number"
                 name="weight"
                 placeholder="Weight (kg)"
-                //value={}
-                //onChange={}
+                value={userSetupInfo.weight}
+                onChange={handleSetupInfo}
               />
               <span className={classes.unit}>kg</span>
             </div>
@@ -71,8 +142,8 @@ export default function Onbording() {
                 name="height"
                 type="number"
                 placeholder="Height (cm)"
-                //value={}
-                //onChange={}
+                value={userSetupInfo.height}
+                onChange={handleSetupInfo}
               />
               <span className={classes.unit}>cm</span>
             </div>

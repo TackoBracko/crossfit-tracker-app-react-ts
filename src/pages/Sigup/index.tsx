@@ -3,7 +3,8 @@ import { Form, useNavigate } from "react-router-dom";
 import classes from "./Signup.module.css";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserDataContext } from "../../components/Context/UserContext";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,7 @@ export default function Signup() {
     password: false,
     confirmPassword: false,
   });
+  const { handleUserData } = useContext(UserDataContext);
   const navigate = useNavigate();
 
   const handleSignupSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +34,12 @@ export default function Signup() {
 
       return;
     }
-    console.log("Signin succseful");
+
+    console.log("Signup succseful", email, password);
+    handleUserData({
+      email,
+      password,
+    });
     navigate("/on-bording");
   };
 
