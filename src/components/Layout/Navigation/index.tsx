@@ -28,7 +28,7 @@ export default function Navigation() {
             </li>
             <li>
               <NavLink
-                to=""
+                to="/category"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
@@ -38,7 +38,7 @@ export default function Navigation() {
             </li>
             <li>
               <NavLink
-                to=""
+                to="/meals"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
@@ -48,7 +48,7 @@ export default function Navigation() {
             </li>
             <li>
               <NavLink
-                to=""
+                to="/calendar"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
@@ -58,7 +58,7 @@ export default function Navigation() {
             </li>
             <li>
               <NavLink
-                to=""
+                to="/profile"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }

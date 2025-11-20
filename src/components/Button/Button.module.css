@@ -44,7 +44,7 @@
 .tertiaryBtn {
   background: none;
   border: none;
-  margin-top: var(--m-lg);
+  margin-top: var(--m-base);
   border-bottom: var(--border-b);
   border-top: var(--border-t);
   padding: var(--p-btn-2);

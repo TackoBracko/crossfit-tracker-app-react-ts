@@ -2,13 +2,13 @@
 import classes from "./Button.module.css";
 
 type ButtonProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variation: string;
   iconLeft?: React.ReactElement;
   iconRight?: React.ReactElement;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
-  type: string;
+  type?: string;
 };
 
 export default function Button({
@@ -35,7 +35,7 @@ export default function Button({
     <button
       className={
         variation === "tertiary"
-          ? `${classes.tertiary}`
+          ? `${classes.tertiaryBtn}`
           : `${classes.baseBtn} ${variationStyleBtn} ${className}`
       }
       onClick={onClick}

@@ -63,7 +63,7 @@ export default function Onbording() {
     handleUserData(user);
     console.log(userSetupInfo);
     login();
-    navigate("/");
+    navigate("/profile");
   };
 
   return (
