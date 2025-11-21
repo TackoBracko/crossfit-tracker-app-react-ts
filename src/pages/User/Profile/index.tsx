@@ -1,11 +1,14 @@
-import { useContext } from "react";
 import classes from "./Profile.module.css";
-import { NavLink } from "react-router-dom";
 import Button from "../../../components/Button";
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../components/Context/AuthContext";
+import { UserDataContext } from "../../../components/Context/UserContext";
 
 export default function Profile() {
+  const { user } = useContext(UserDataContext);
   const { logout } = useContext(AuthContext);
+  const userInitial = user.name ? user.name.charAt(0).toUpperCase() : "";
 
   return (
     <>
@@ -15,26 +18,26 @@ export default function Profile() {
 
       <section className={classes.profileSection}>
         <div className={classes.leftInfo}>
-          <p className={classes.profilePic}></p>
+          <p className={classes.profilePic}>{userInitial}</p>
           <h3>
-            <span>Ana</span>
+            <span>{user.name}</span>
           </h3>
         </div>
 
         <div className={classes.rightInfo}>
           <p>
             <span>Weight: </span>
-            <span>52 kg</span>
+            <span>{user.weight} kg</span>
           </p>
 
           <p>
             <span>Height: </span>
-            <span>160 cm</span>
+            <span>{user.height} cm</span>
           </p>
 
           <p>
             <span>Age: </span>
-            <span>34 years</span>
+            <span>{user.age} years</span>
           </p>
         </div>
       </section>

@@ -80,7 +80,6 @@
 
 .genderField {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   border-bottom: var(--border-b);
   padding-bottom: var(--p-lg);
@@ -88,4 +87,5 @@
 
 .genderSelection {
   display: flex;
+  gap: var(--gap-xs);
 }

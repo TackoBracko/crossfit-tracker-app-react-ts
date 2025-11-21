@@ -10,6 +10,7 @@ type InputProps = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string | number;
   error?: string;
+  disabled?: boolean;
 };
 
 export default function Input({

@@ -47,7 +47,7 @@ export default function Login() {
     <>
       <header className={classes.loginHeader}>
         <h3>
-          Welcom back <span>{user?.name}</span>
+          Welcom back <span>{user.name}</span>
         </h3>
       </header>
 

@@ -14,19 +14,30 @@ type UserDataProps = {
 };
 
 type UserContextType = {
-  user: UserDataProps | null;
+  user: UserDataProps;
   handleUserData: (data: Partial<UserDataProps>) => void;
 };
 
+const userData: UserDataProps = {
+  name: "",
+  email: "",
+  password: "",
+  weight: 0,
+  height: 0,
+  gender: "",
+  birthday: "",
+  age: 0,
+};
+
 export const UserDataContext = React.createContext<UserContextType>({
-  user: null,
+  user: userData,
   handleUserData: () => {},
 });
 
 export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [user, setUser] = useState<UserDataProps | null>(null);
+  const [user, setUser] = useState<UserDataProps>(userData);
 
   const handleUserData = (data: Partial<UserDataProps>) => {
     setUser((prev) => ({ ...prev, ...data }));
