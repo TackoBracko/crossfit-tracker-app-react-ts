@@ -1,8 +1,7 @@
-//import React from 'react'
 import classes from "./Onbording.module.css";
-import { Form, useNavigate } from "react-router-dom";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
+import { Form, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserDataContext } from "../../../components/Context/UserContext";
 import { AuthContext } from "../../../components/Context/AuthContext";
@@ -13,12 +12,12 @@ export default function Onbording() {
   const navigate = useNavigate();
 
   const [userSetupInfo, setUserSetupInfo] = useState({
-    name: user?.name,
-    birthday: user?.birthday,
-    weight: user?.weight,
-    height: user?.height,
-    gender: user?.gender,
-    age: user?.age,
+    name: user.name,
+    birthday: user.birthday,
+    weight: user.weight,
+    height: user.height,
+    gender: user.gender,
+    age: user.age,
   });
 
   const [setupInfoError, setSetupInfoError] = useState(false);
@@ -38,7 +37,7 @@ export default function Onbording() {
 
   const handleAge = (birthday: string) => {
     const age = Date.now() - new Date(birthday).getTime();
-    return Math.floor(age / (365.25 * 224 * 60 * 60 * 1000));
+    return Math.floor(age / (365.25 * 24 * 60 * 60 * 1000));
   };
 
   const handleSetupInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -105,7 +104,8 @@ export default function Onbording() {
                   type="radio"
                   name="gender"
                   value="Male"
-                  onClick={() => handleGender("Male")}
+                  checked={userSetupInfo.gender === "Male"}
+                  onChange={() => handleGender("Male")}
                 />
                 Male
               </label>
@@ -114,7 +114,8 @@ export default function Onbording() {
                   type="radio"
                   name="gender"
                   value="Female"
-                  onClick={() => handleGender("Female")}
+                  checked={userSetupInfo.gender === "Famale"}
+                  onChange={() => handleGender("Female")}
                 />
                 Female
               </label>

@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <header className={classes.homeHeader}>
         <h1>
-          Welcome back, <br /> {user?.name}
+          Welcome back, <br /> {user.name}
         </h1>
         <p>Push yourself, because no one else is going to do it for you</p>
       </header>

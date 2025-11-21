@@ -22,7 +22,8 @@ export default function Signup() {
     e.preventDefault();
 
     const isEmailValid = email.trim() !== "" && email.includes("@");
-    const isPasswordValid = password.trim() !== "";
+    const isPasswordValid = password.trim() !== "" && password.length > 5;
+
     const isConfirmPassword = password === confirmPassword;
 
     if (!isEmailValid || !isPasswordValid || !isConfirmPassword) {
@@ -74,7 +75,13 @@ export default function Signup() {
           </div>
 
           <div>
-            {signupError.password ? <p>Password is required</p> : null}
+            {signupError.password ? (
+              password.trim() === " " ? (
+                <p>Password is required</p>
+              ) : (
+                <p>Password has to be longer than 6 characters</p>
+              )
+            ) : null}
 
             <Input
               type="password"
