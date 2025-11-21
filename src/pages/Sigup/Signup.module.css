@@ -1,11 +1,11 @@
 .signupHeader {
-  background-image: url("./../../assets/AppPictures/SignupBackground.png");
+  background-image: url("./../../assets/AppPictures/signup_background.jpeg");
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 387px;
+  height: 430px;
   color: var(--primary-text);
   text-transform: uppercase;
   padding: var(--p-xl);
@@ -22,8 +22,8 @@
 }
 
 .signupHeader p {
-  font-size: var(--font-xs);
-  font-weight: var(--font-normal);
+  font-size: var(--font-sm);
+  font-weight: var(--font-bold);
 }
 
 .signupFormSection {

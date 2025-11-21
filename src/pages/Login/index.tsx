@@ -54,7 +54,9 @@ export default function Login() {
       <section className={classes.loginFormSection}>
         <Form onSubmit={handleLoginSubmit}>
           <div>
-            {loginError.email ? <p>Email is required</p> : null}
+            {loginError.email ? (
+              <p className={classes.errorText}>Email is required</p>
+            ) : null}
             <Input
               type="email"
               placeholder="Email"
@@ -66,7 +68,9 @@ export default function Login() {
           </div>
 
           <div>
-            {loginError.password ? <p>Password is required</p> : null}
+            {loginError.password ? (
+              <p className={classes.errorText}>Password is required</p>
+            ) : null}
 
             <Input
               type="passwor"

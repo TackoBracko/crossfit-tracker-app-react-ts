@@ -1,5 +1,5 @@
 .homeHeader {
-  margin-top: var(--m-2xl);
+  margin-top: var(--m-3xl);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,15 +8,33 @@
 }
 
 .homeHeader h1 {
-  font-size: 24px;
+  font-size: var(--font-2xl);
   font-weight: 700;
   text-transform: uppercase;
   padding-bottom: 10px;
 }
 
 .homeHeader p {
-  font-size: 10px;
+  font-size: var(--font-sm);
   font-weight: 400;
   color: var(--secondary-text);
   text-transform: uppercase;
+}
+
+@media (min-width: 1024px) {
+  .homeHeader {
+    margin-top: var(--m-4xl);
+  }
+
+  .homeHeader h1 {
+    font-size: var(--font-3xl);
+    font-weight: 700;
+  }
+
+  .homeHeader p {
+    font-size: var(--font-xl);
+    font-weight: 400;
+    color: var(--secondary-text);
+    text-transform: uppercase;
+  }
 }

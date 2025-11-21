@@ -74,7 +74,9 @@ export default function Onbording() {
 
       <section className={classes.setupSection}>
         <Form onSubmit={handleSetupInfoSubmit}>
-          {setupInfoError ? <p>Please fill out all fields</p> : null}
+          {setupInfoError ? (
+            <p className={classes.errorText}>Please fill out all fields</p>
+          ) : null}
 
           <div className={classes.setupInput}>
             <Input
@@ -114,7 +116,7 @@ export default function Onbording() {
                   type="radio"
                   name="gender"
                   value="Female"
-                  checked={userSetupInfo.gender === "Famale"}
+                  checked={userSetupInfo.gender === "Female"}
                   onChange={() => handleGender("Female")}
                 />
                 Female

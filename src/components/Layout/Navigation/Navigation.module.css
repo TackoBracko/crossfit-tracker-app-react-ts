@@ -12,17 +12,15 @@
   font-size: var(--font-sm);
   font-weight: var(--font-semibold);
   display: flex;
-}
-
-.activeNav {
-  display: flex;
-  gap: var(--gap-lg);
   align-items: center;
 }
 
-.activeNav li a.active {
-  text-decoration: underline 2px #d0fd3e;
-  text-underline-offset: 8px;
+.navLogged {
+  justify-content: center;
+}
+
+.navPublic {
+  justify-content: flex-start;
 }
 
 .dark {
@@ -42,9 +40,58 @@
   width: 50px;
   height: 50px;
   border-radius: var(--rounded-3xl);
-  transform: border 0.3s, transform 0.3s;
 }
 
 .loggedNav li a.active {
   border: 1px solid var(--primary-btn-hover);
+}
+
+.publicNav {
+  display: flex;
+  gap: var(--gap-lg);
+  align-items: center;
+}
+
+.publicNav li a.active {
+  text-decoration: underline 2px #d0fd3e;
+  text-underline-offset: 8px;
+}
+
+@media (min-width: 425px) {
+  .loggedNav li a {
+    width: 52px;
+    height: 52px;
+  }
+
+  .loggedNav {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .loggedNav {
+    gap: 32px;
+  }
+
+  .loggedNav li a {
+    width: 60px;
+    height: 60px;
+    font-size: var(--font-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .loggedNav {
+    gap: 40px;
+  }
+
+  .loggedNav li a {
+    width: 70px;
+    height: 70px;
+    font-size: var(--font-2xl);
+  }
+
+  .publicNav li a {
+    font-size: var(--font-2xl);
+  }
 }
