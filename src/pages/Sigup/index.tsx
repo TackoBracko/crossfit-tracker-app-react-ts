@@ -60,7 +60,9 @@ export default function Signup() {
       <section className={classes.signupFormSection}>
         <Form onSubmit={handleSignupSubmit}>
           <div>
-            {signupError.email ? <p>Email is required</p> : null}
+            {signupError.email ? (
+              <p className={classes.errorText}>Email is required</p>
+            ) : null}
 
             <Input
               type="email"
@@ -77,9 +79,11 @@ export default function Signup() {
           <div>
             {signupError.password ? (
               password.trim() === " " ? (
-                <p>Password is required</p>
+                <p className={classes.errorText}>Password is required</p>
               ) : (
-                <p>Password has to be longer than 6 characters</p>
+                <p className={classes.errorText}>
+                  Password has to be longer than 6 characters
+                </p>
               )
             ) : null}
 
@@ -94,7 +98,9 @@ export default function Signup() {
           </div>
 
           <div>
-            {signupError.confirmPassword ? <p>Passwords do not match</p> : null}
+            {signupError.confirmPassword ? (
+              <p className={classes.errorText}>Passwords do not match</p>
+            ) : null}
 
             <Input
               type="password"

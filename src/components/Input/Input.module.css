@@ -14,13 +14,13 @@
 
 ::placeholder {
   font-weight: var(--font-normal);
-  font-size: var(--font-sm);
+  font-size: var(--font-base);
   color: var(--primary-text);
 }
 
 label {
   display: block;
-  font-size: var(--font-sm);
+  font-size: var(--font-base);
   color: var(--secondary-text);
   /*padding-left: var(--p-base);*/
   margin-bottom: var(--m-xs);
@@ -38,24 +38,16 @@ label {
   border-bottom-color: red;
 }
 
-.inputForModal {
-  width: 100%;
-  padding: var(--p-base);
-  margin-bottom: var(--p-sm);
-  border: 2px solid #ccc;
-  border-radius: var(--rounded-lg);
-  background: var(--primary-text);
-  color: var(--tertiary-text);
-}
+@media (min-width: 1024px) {
+  .inputBase {
+    font-size: var(--font-lg);
+  }
 
-/*.inputForMealSearch {
-  width: 100%;
-  border: 1px solid #2c2c2e;
-  color: var(--primary-text);
-  border-radius: var(--rounded-xl);
-  outline: none;
-}
+  ::placeholder {
+    font-size: var(--font-xl);
+  }
 
-.inputForMealSearch::placeholder {
-  font-size: var(--font-sm);
-}*/
+  label {
+    font-size: var(--font-xl);
+  }
+}

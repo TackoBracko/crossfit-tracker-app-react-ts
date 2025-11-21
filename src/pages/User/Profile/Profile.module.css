@@ -3,7 +3,7 @@
   justify-content: center;
   padding: var(--p-gap);
   text-transform: uppercase;
-  margin-bottom: var(--m-base);
+  margin-top: var(--m-2xl);
 }
 
 .profileHeader h1 {
@@ -42,23 +42,18 @@
 }
 
 .leftInfo h3 {
-  font-size: var(--font-3xl);
-  font-weight: var(--font-normal);
+  font-size: var(--font-xl);
+  font-weight: var(--font-medium);
   margin-top: var(--m-xs);
 }
 
-.leftInfo h3 span {
-  font-size: var(--font-3xl);
-  font-weight: var(--font-bold);
-}
-
 .rightInfo {
-  border-left: var(--border-t);
-  padding-left: var(--p-xl);
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--gap-lg);
+  border-left: var(--border-t);
+  padding-left: var(--p-xl);
 }
 
 .rightInfo span:first-child {
@@ -90,4 +85,47 @@
   font-size: var(--font-sm);
   font-weight: var(--font-semibold);
   padding: 20px 20px 20px 0;
+}
+
+@media (min-width: 425px) {
+  .profileSection {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .profileHeader {
+    margin-top: var(--m-3xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .profileHeader {
+    margin-top: var(--m-4xl);
+  }
+
+  .profileHeader h1 {
+    font-size: var(--font-2xl);
+  }
+
+  .profilePic {
+    width: 140px;
+    height: 140px;
+  }
+
+  .leftInfo h3 {
+    font-size: var(--font-3xl);
+  }
+
+  .rightInfo span:first-child {
+    font-size: var(--font-xl);
+  }
+
+  .rightInfo span:last-child {
+    font-size: var(--font-xl);
+  }
+
+  .profileSettings li {
+    font-size: var(--font-xl);
+  }
 }

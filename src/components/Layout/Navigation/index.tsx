@@ -13,7 +13,11 @@ export default function Navigation() {
           : classes.appHeader
       }
     >
-      <nav className={classes.appNavigation}>
+      <nav
+        className={`${classes.appNavigation} ${
+          isUserLogged ? classes.navLogged : classes.navPublic
+        }`}
+      >
         {isUserLogged ? (
           <ul className={classes.loggedNav}>
             <li>
@@ -68,7 +72,7 @@ export default function Navigation() {
             </li>
           </ul>
         ) : (
-          <ul className={classes.activeNav}>
+          <ul className={classes.publicNav}>
             <li>
               <NavLink
                 to="log-in"
