@@ -3,12 +3,11 @@
   flex-direction: column;
   justify-content: center;
   padding: var(--p-gap);
-  margin-bottom: var(--m-);
   gap: var(--gap-sm);
   background-image: url("./../../../assets/AppPictures/onbording_background.jpg");
   background-size: cover;
   background-position: center;
-  height: 340px;
+  height: 400px;
   text-align: center;
 }
 
@@ -28,6 +27,8 @@
 
 .setupSection {
   padding: var(--p-gap);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .setupInput {
@@ -43,57 +44,90 @@
 
 .unitDiv input {
   width: 100%;
-  padding-right: 50px;
 }
 
 .unit {
   position: absolute;
-  right: 12px;
+  right: 14px;
   top: 50%;
+  transform: translateY(-50%);
   font-size: var(--font-xs);
   font-weight: var(--font-medium);
   border: 1px solid;
   border-radius: var(--rounded-xl);
   background-color: #d0fd3e;
   color: var(--tertiary-text);
-  padding: 2px 6px;
+  padding: 3px 6px;
+}
+
+.genderField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
 }
 
 .genderSelection {
   display: flex;
   align-items: center;
-  gap: var(--gap-sm);
+  gap: var(--gap-lg);
 }
 
 .genderOption {
   display: flex;
   align-items: center;
-  gap: var(--gap-xs);
-  padding: var(--p-small);
-  border: 1px solid var(--border-b);
-  border-radius: var(--rounded-xl);
-  cursor: pointer;
-}
-
-.genderOption input {
-  accent-color: #d0fd3e;
+  gap: 6px;
+  font-size: var(--font-base);
 }
 
 .errorText {
   color: var(--tertiary-btn-text);
-  font-weight: var(--font-normal);
   font-size: var(--font-base);
   text-align: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 425px) {
   .setupHeader h2 {
     font-size: var(--font-2xl);
+  }
+
+  .setupHeader p {
+    font-size: var(--font-lg);
+  }
+}
+
+@media (min-width: 768px) {
+  .setupHeader {
+    height: 450px;
+  }
+
+  .setupHeader h2 {
+    font-size: var(--font-3xl);
+  }
+
+  .setupSection {
+    max-width: 700px;
   }
 }
 
 @media (min-width: 1024px) {
   .setupHeader {
-    height: 480px;
+    height: 500px;
+  }
+
+  .setupHeader h2 {
+    font-size: var(--font-4xl);
+  }
+
+  .setupHeader p {
+    font-size: var(--font-xl);
+  }
+
+  .setupSection {
+    max-width: 800px;
+  }
+
+  .unit {
+    font-size: var(--font-sm);
+    padding: 4px 8px;
   }
 }

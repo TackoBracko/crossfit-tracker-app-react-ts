@@ -9,7 +9,6 @@
 .profileHeader h1 {
   font-size: var(--font-xl);
   font-weight: var(--font-bold);
-  text-transform: uppercase;
 }
 
 .profileSection {
@@ -42,18 +41,26 @@
 }
 
 .leftInfo h3 {
-  font-size: var(--font-xl);
-  font-weight: var(--font-medium);
-  margin-top: var(--m-xs);
+  font-size: var(--font-3xl);
+  font-weight: var(--font-normal);
+}
+
+.leftInfo h3 span {
+  font-weight: var(--font-bold);
 }
 
 .rightInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--gap-lg);
   border-left: var(--border-t);
   padding-left: var(--p-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+}
+
+.rightInfo p {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xs);
 }
 
 .rightInfo span:first-child {
@@ -64,12 +71,6 @@
 .rightInfo span:last-child {
   font-size: var(--font-base);
   font-weight: var(--font-semibold);
-}
-
-.rightInfo p {
-  display: flex;
-  gap: var(--gap-xs);
-  align-items: center;
 }
 
 .profileSettings {
@@ -88,14 +89,33 @@
 }
 
 @media (min-width: 425px) {
-  .profileSection {
-    justify-content: center;
+  .profilePic {
+    width: 130px;
+    height: 130px;
   }
 }
 
 @media (min-width: 768px) {
   .profileHeader {
     margin-top: var(--m-3xl);
+  }
+
+  .profileHeader h1 {
+    font-size: var(--font-2xl);
+  }
+
+  .profileSection {
+    justify-content: center;
+  }
+
+  .profilePic {
+    width: 150px;
+    height: 150px;
+    font-size: var(--font-4xl);
+  }
+
+  .profileSection {
+    gap: var(--gap-xl);
   }
 }
 
@@ -109,8 +129,8 @@
   }
 
   .profilePic {
-    width: 140px;
-    height: 140px;
+    width: 170px;
+    height: 170px;
   }
 
   .leftInfo h3 {
@@ -123,6 +143,11 @@
 
   .rightInfo span:last-child {
     font-size: var(--font-xl);
+  }
+
+  .profileSettings {
+    max-width: 700px;
+    margin: var(--m-lg) auto 0 auto;
   }
 
   .profileSettings li {

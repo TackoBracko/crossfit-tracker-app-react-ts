@@ -4,11 +4,12 @@
   align-items: center;
   padding: var(--p-gap);
   margin-top: var(--m-3xl);
-  gap: 50px;
+  gap: 40px;
 }
 
 .headerInfo {
   display: flex;
+  align-items: center;
   gap: var(--gap-lg);
 }
 
@@ -24,36 +25,48 @@
 }
 
 .editProfileImg p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 120px;
   height: 120px;
   border: 3px solid transparent;
   background: linear-gradient(#151515, #151515) padding-box,
     linear-gradient(to top, #d0fd3e, #ff2424) border-box;
   border-radius: var(--rounded-3xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: var(--font-3xl);
 }
 
 .editFormSection {
   padding: var(--p-gap);
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
 }
 
 .editInput {
-  margin-bottom: var(--m-sm);
-  margin-top: var(--m-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
 }
 
 .editInput input[type="email"] {
-  opacity: 20%;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .unitDiv {
   position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
+}
+
+.unitDiv input {
+  padding-right: 60px;
 }
 
 .unit {
@@ -61,30 +74,57 @@
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  padding: 4px 8px;
-  border-radius: var(--rounded-xl);
-  border: 1px solid var(--primary-btn-hover);
   background-color: var(--span-background);
   color: var(--tertiary-text);
-  font-size: var(--font-sm);
-  font-weight: var(--font-medium);
-}
-
-.unitDiv span {
-  font-size: var(--font-sm);
-  font-weight: var(--font-normal);
+  font-size: var(--font-xs);
+  padding: 4px 6px;
+  border-radius: var(--rounded-xl);
+  border: 1px solid var(--tertiary-text);
 }
 
 .genderField {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: var(--border-b);
   padding-bottom: var(--p-lg);
+  border-bottom: var(--border-b);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
 }
 
 .genderSelection {
   display: flex;
-  gap: var(--gap-xs);
+  gap: var(--gap-lg);
+}
+
+.genderOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.genderOption input {
+  accent-color: #d0fd3e;
+  width: 16px;
+  height: 16px;
+}
+
+@media (min-width: 425px) {
+  .editProfileImg p {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media (min-width: 768px) {
+  .editHeader {
+    margin-top: var(--m-3xl);
+  }
+
+  .editProfileImg p {
+    width: 140px;
+    height: 140px;
+    font-size: var(--font-4xl);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -92,29 +132,19 @@
     margin-top: var(--m-4xl);
   }
 
-  .headerInfo h1 {
+  .editHeader h1 {
     font-size: var(--font-2xl);
   }
 
-  .editProfileImg p {
-    width: 140px;
-    height: 140px;
-  }
-
   .editFormSection {
-    width: 600px;
-    margin: 0 auto;
+    max-width: 650px;
   }
 
   .editForm {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-lg);
+    gap: var(--gap-xl);
   }
 
   .unit {
-    padding: 8px 16px;
-    font-size: var(--font-xl);
-    font-weight: var(--font-semibold);
+    font-size: var(--font-sm);
   }
 }
