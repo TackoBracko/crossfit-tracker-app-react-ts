@@ -9,7 +9,7 @@
   font-size: var(--font-base);
   font-weight: var(--font-medium);
   padding: var(--p-base);
-  transition: border-color 0.2sec;
+  transition: border-color 0.2s;
 }
 
 ::placeholder {
@@ -22,7 +22,6 @@ label {
   display: block;
   font-size: var(--font-base);
   color: var(--secondary-text);
-  /*padding-left: var(--p-base);*/
   margin-bottom: var(--m-xs);
 }
 
