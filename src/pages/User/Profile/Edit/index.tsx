@@ -1,9 +1,10 @@
-import { NavLink, Form, useNavigate } from "react-router-dom";
 import classes from "./Edit.module.css";
 import Button from "../../../../components/Button";
 import Input from "../../../../components/Input";
+import { NavLink, Form, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserDataContext } from "../../../../components/Context/UserContext";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 
 export default function Edit() {
   const { user, handleUserData } = useContext(UserDataContext);
@@ -29,6 +30,7 @@ export default function Edit() {
   });
 
   const userInitial = user.name ? user.name.charAt(0).toUpperCase() : "";
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleEditData = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -79,12 +81,19 @@ export default function Edit() {
     setEditError((prev) => ({ ...prev, [input]: false }));
   };
 
+  const handlePasswordToggle = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <header className={classes.editHeader}>
         <div className={classes.headerInfo}>
           <NavLink to="/profile">
-            <Button variation="secondary" />
+            <Button
+              variation="secondary"
+              iconLeft={<ArrowLeft className={classes.icon} />}
+            />
           </NavLink>
           <h1>Edit Profile</h1>
         </div>
@@ -123,7 +132,7 @@ export default function Edit() {
             <div className={classes.unitDiv}>
               <Input
                 name="password"
-                type="text"
+                type={showPassword ? "text" : "password"}
                 label="Password"
                 placeholder="Your password"
                 value={userEditData.password}
@@ -135,6 +144,9 @@ export default function Edit() {
                     : ""
                 }
               />
+              <span className={classes.unit} onClick={handlePasswordToggle}>
+                {showPassword ? <Eye /> : <EyeOff />}
+              </span>
             </div>
           </div>
 

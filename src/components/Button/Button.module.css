@@ -35,12 +35,6 @@
   border-color: var(--primary-btn-hover);
 }
 
-.secondaryBtn svg {
-  display: block;
-  width: 16px;
-  height: 16px;
-}
-
 .tertiaryBtn {
   background: none;
   border: none;
@@ -62,4 +56,30 @@
 
 .quaternaryBtn:hover {
   background-color: var(--tertiary-btn-text);
+}
+
+.icon {
+  width: 26px;
+  height: 26px;
+}
+
+@media (min-width: 425px) {
+  .icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 768px) {
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .icon {
+    width: 34px;
+    height: 34px;
+  }
 }

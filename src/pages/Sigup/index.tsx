@@ -1,8 +1,7 @@
-//import React from 'react'
-import { Form, useNavigate } from "react-router-dom";
 import classes from "./Signup.module.css";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { Form, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserDataContext } from "../../components/Context/UserContext";
 

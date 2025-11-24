@@ -2,6 +2,7 @@ import classes from "./Navigation.module.css";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
+import { Home, Dumbbell, Calendar, Utensils, User } from "lucide-react";
 
 export default function Navigation() {
   const { isUserLogged } = useContext(AuthContext);
@@ -27,7 +28,7 @@ export default function Navigation() {
                   isActive ? classes.active : undefined
                 }
               >
-                H
+                <Home className={classes.icon} />
               </NavLink>
             </li>
             <li>
@@ -37,7 +38,7 @@ export default function Navigation() {
                   isActive ? classes.active : undefined
                 }
               >
-                C
+                <Dumbbell className={classes.icon} />
               </NavLink>
             </li>
             <li>
@@ -47,7 +48,7 @@ export default function Navigation() {
                   isActive ? classes.active : undefined
                 }
               >
-                M
+                <Utensils className={classes.icon} />
               </NavLink>
             </li>
             <li>
@@ -57,7 +58,7 @@ export default function Navigation() {
                   isActive ? classes.active : undefined
                 }
               >
-                C
+                <Calendar className={classes.icon} />
               </NavLink>
             </li>
             <li>
@@ -67,7 +68,7 @@ export default function Navigation() {
                   isActive ? classes.active : undefined
                 }
               >
-                P
+                <User className={classes.icon} />
               </NavLink>
             </li>
           </ul>
