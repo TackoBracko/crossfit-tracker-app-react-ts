@@ -12,7 +12,7 @@ import Onbording from "./pages/Sigup/Onbording";
 import Layout from "./components/Layout";
 import Profile from "./pages/User/Profile";
 import Edit from "./pages/User/Profile/Edit";
-import CategoriesList from "./pages/Categories/List";
+import CategoriesList from "./pages/Movements/CategoriesList";
 import { AuthProvider } from "./components/Context/AuthContext";
 import { ProtectedRoutes, PublicRoutes } from "./components/Context/AuthRoutes";
 import { UserDataProvider } from "./components/Context/UserContext";
