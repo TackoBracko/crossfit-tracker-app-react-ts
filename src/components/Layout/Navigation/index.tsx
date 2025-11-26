@@ -33,7 +33,7 @@ export default function Navigation() {
             </li>
             <li>
               <NavLink
-                to="/category"
+                to="/categories"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
