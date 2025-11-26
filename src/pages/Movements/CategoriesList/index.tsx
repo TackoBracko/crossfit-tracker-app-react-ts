@@ -1,5 +1,6 @@
 import classes from "./CategoriesList.module.css";
 import { crossfitData } from "../../../Data/Exercise";
+import { NavLink } from "react-router-dom";
 
 export default function CategoriesList() {
   return (
@@ -11,10 +12,12 @@ export default function CategoriesList() {
       <section className={classes.categoriesSection}>
         {crossfitData.map((category) => (
           <div key={category.id} className={classes.categoryBox}>
-            <div className={classes.categoryCard}>
-              <img src={category.icon} alt={category.title} />
-              <h3>{category.title}</h3>
-            </div>
+            <NavLink to={`/categories/${category.id}`}>
+              <div className={classes.categoryCard}>
+                <img src={category.icon} alt={category.title} />
+                <h3>{category.title}</h3>
+              </div>
+            </NavLink>
           </div>
         ))}
       </section>
