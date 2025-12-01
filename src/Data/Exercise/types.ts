@@ -3,7 +3,7 @@ export interface Category {
   title: string;
   icon: string;
   categoryDescription: string;
-  exercise: [];
+  exercises: Exercise[];
 }
 
 export interface Exercise {
@@ -12,8 +12,8 @@ export interface Exercise {
   description: string;
   picture: string;
   video: string;
-  hasWeight: string;
-  subExercise?: [];
+  hasWeight: boolean;
+  subExercises?: SubExercise[];
 }
 
 export interface SubExercise {
