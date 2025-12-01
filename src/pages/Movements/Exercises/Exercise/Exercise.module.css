@@ -1,0 +1,123 @@
+.exerciseHeader {
+  padding: var(--p-gap);
+}
+
+.exerciseHeader button {
+  background: var(--secondary-background-btn);
+  border: 1px solid #2c2c2e;
+  border-radius: var(--rounded-2xl);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exerciseHeader button:hover {
+  background-color: var(--primary-btn-hover);
+  border-color: var(--primary-btn-hover);
+}
+
+.exerciseSection {
+  padding: 0 24px;
+}
+
+.exerciseVideo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+}
+
+.exerciseVideo h1 {
+  font-size: var(--font-2xl);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.exerciseVideo img {
+  width: 100%;
+  border-radius: var(--rounded-xl);
+}
+
+.exerciseVideo p {
+  font-size: var(--font-sm);
+  margin-bottom: var(--m-sm);
+}
+
+.videoDescription {
+  padding-top: var(--p-base);
+  font-size: var(--font-base);
+}
+
+.subCategorySection {
+  padding: var(--p-gap);
+  margin-top: var(--m-base);
+}
+
+.subCategorySection h3 {
+  font-size: var(--font-xl);
+  font-weight: var(--font-semibold);
+  color: var(--secondary-text);
+  margin-bottom: var(--m-sm);
+}
+
+.subCategoryList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-sm);
+}
+
+.subCategoryBox {
+  background: #2c2c2e;
+  border-radius: var(--rounded-xl);
+  overflow: hidden;
+}
+
+.subCategoryBox h4 {
+  padding: var(--p-xs);
+  font-size: var(--font-base);
+  font-weight: var(--font-medium);
+  color: var(--primary-text);
+}
+
+.subCategoryBox img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0 0 var(--rounded-xl) var(--rounded-xl);
+}
+
+@media (min-width: 425px) {
+  .subCategoryList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .exerciseVideo h1 {
+    font-size: var(--font-3xl);
+  }
+
+  .exerciseVideo p {
+    font-size: var(--font-lg);
+  }
+
+  .subCategoryList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .exerciseSection {
+    padding: 50px 150px;
+  }
+
+  .exerciseVideo p {
+    font-size: var(--font-xl);
+  }
+
+  .subCategoryList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
