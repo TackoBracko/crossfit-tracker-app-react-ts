@@ -1,0 +1,15 @@
+.calendarSection {
+  color: var(--primary-text);
+  display: flex;
+  flex-direction: column;
+  padding: var(--p-forma);
+}
+
+.daysName {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+  justify-items: center;
+  cursor: pointer;
+  padding-bottom: var(--p-xs);
+}
