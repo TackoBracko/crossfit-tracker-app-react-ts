@@ -16,6 +16,7 @@ import CategoriesList from "./pages/Movements/Categories/index.tsx";
 import ExercisesList from "./pages/Movements/Exercises/List/index.tsx";
 import Exercise from "./pages/Movements/Exercises/Exercise/index.tsx";
 import SubExercise from "./pages/Movements/Exercises/SubExercise/index.tsx";
+import Calendar from "./pages/Calendar/index.tsx";
 import { AuthProvider } from "./components/Context/AuthContext";
 import { ProtectedRoutes, PublicRoutes } from "./components/Context/AuthRoutes";
 import { UserDataProvider } from "./components/Context/UserContext";
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
         <Route element={<ProtectedRoutes />}>
           <Route index element={<Home />} />
           <Route path="/categories" element={<CategoriesList />} />
+          <Route path="/calendar" element={<Calendar />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Route>

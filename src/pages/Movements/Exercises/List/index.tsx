@@ -2,7 +2,7 @@ import classes from "./ExercisesList.module.css";
 import { NavLink, useParams } from "react-router-dom";
 import Button from "../../../../components/Button";
 import { ArrowLeft } from "lucide-react";
-import { crossfitData } from "../../../../Data/Exercise";
+import { crossfitData } from "../../../../Data/Exercises";
 
 export default function ExercisesList() {
   const { categoryId } = useParams<{ categoryId: string }>();

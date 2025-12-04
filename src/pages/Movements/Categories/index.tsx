@@ -1,5 +1,5 @@
 import classes from "./CategoriesList.module.css";
-import { crossfitData } from "../../../Data/Exercise";
+import { crossfitData } from "../../../Data/Exercises";
 import { NavLink } from "react-router-dom";
 
 export default function CategoriesList() {

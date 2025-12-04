@@ -1,0 +1,31 @@
+.dates {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--gap-lg);
+  justify-items: center;
+  cursor: pointer;
+}
+
+.day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(107, 103, 103);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--rounded-3xl);
+}
+
+.day:hover {
+  background-color: var(--primary-text);
+  color: var(--tertiary-text);
+  border-radius: var(--rounded-3xl);
+}
+
+.currentDay {
+  background-color: #b4a0ff;
+}
+
+.allDays {
+  color: var(--primary-text);
+}

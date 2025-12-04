@@ -1,5 +1,5 @@
 import classes from "./Exercise.module.css";
-import { crossfitData } from "../../../../Data/Exercise";
+import { crossfitData } from "../../../../Data/Exercises";
 import { useParams, NavLink } from "react-router-dom";
 import Button from "../../../../components/Button";
 import { ArrowLeft } from "lucide-react";
