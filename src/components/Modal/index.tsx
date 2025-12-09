@@ -1,6 +1,5 @@
 import { useRef, forwardRef, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
-import classes from "./Modal.module.css";
 
 export interface ModalRef {
   open: () => void;
@@ -28,9 +27,7 @@ const Modal = forwardRef<ModalRef, ModalProps>(function Modal(
 
   return createPortal(
     <dialog ref={dialog} className="modal">
-      <div className={classes.modalWrapper}>
-        <div className={classes.modalContent}>{children}</div>
-      </div>
+      <div>{children}</div>
     </dialog>,
     document.body
   );

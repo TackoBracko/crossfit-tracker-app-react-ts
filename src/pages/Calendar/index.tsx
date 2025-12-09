@@ -7,6 +7,7 @@ import type { CalendarDay } from "../../Data/Calendar/types";
 import type { ModalRef } from "../../components/Modal";
 import Modal from "../../components/Modal";
 import WorkoutHeader from "../../components/WorkoutModalContent/Header";
+import LayoutForModal from "../../components/Modal/Layout";
 
 export default function Calendar() {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -56,19 +57,25 @@ export default function Calendar() {
         />
 
         <Modal ref={openCreateModalRef}>
-          <WorkoutHeader
-            modalTitle={`Workout for ${currentDay.toLocaleDateString("en-GB")}`}
-          />
-          <CreateWorkoutModal />
+          <LayoutForModal>
+            <WorkoutHeader
+              modalTitle={`Workout for ${currentDay.toLocaleDateString(
+                "en-GB"
+              )}`}
+            />
+            <CreateWorkoutModal />
+          </LayoutForModal>
         </Modal>
 
         <Modal ref={openEditModalRef}>
-          <WorkoutHeader
-            modalTitle={`Edit workout for ${currentDay.toLocaleDateString(
-              "en-GB"
-            )}`}
-          />
-          <CreateWorkoutModal />
+          <LayoutForModal>
+            <WorkoutHeader
+              modalTitle={`Edit workout for ${currentDay.toLocaleDateString(
+                "en-GB"
+              )}`}
+            />
+            <CreateWorkoutModal />
+          </LayoutForModal>
         </Modal>
       </section>
     </>
