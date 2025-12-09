@@ -28,7 +28,9 @@ const Modal = forwardRef<ModalRef, ModalProps>(function Modal(
 
   return createPortal(
     <dialog ref={dialog} className="modal">
-      <div className={classes.modalContent}>{children}</div>
+      <div className={classes.modalWrapper}>
+        <div className={classes.modalContent}>{children}</div>
+      </div>
     </dialog>,
     document.body
   );

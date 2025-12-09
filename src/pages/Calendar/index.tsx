@@ -1,16 +1,26 @@
 import classes from "./Calendar.module.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CalendarHeader from "../../components/Calendar/Header";
 import CalendarComponent from "../../components/Calendar/Component";
+import CreateWorkoutModal from "../../components/WorkoutModalContent/Create";
 import type { CalendarDay } from "../../Data/Calendar/types";
+import type { ModalRef } from "../../components/Modal";
+import Modal from "../../components/Modal";
+import WorkoutHeader from "../../components/WorkoutModalContent/Header";
 
 export default function Calendar() {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [currentDay, setCurrentDay] = useState(new Date());
+  const [selectedDay, setSelectedDay] = useState<Date | string>("");
+  const openCreateModalRef = useRef<ModalRef>(null);
+  const openEditModalRef = useRef<ModalRef>(null);
 
   const changeCurrentDay = (day: CalendarDay) => {
     const newDate = new Date(day.year, day.month, day.number);
     setCurrentDay(newDate);
+    setSelectedDay(newDate);
+    openCreateModalRef.current?.open();
+    console.log(selectedDay, "Create Modal is open");
   };
 
   const nextMonth = () => {
@@ -44,6 +54,22 @@ export default function Calendar() {
           currentDay={currentDay}
           changeCurrentDay={changeCurrentDay}
         />
+
+        <Modal ref={openCreateModalRef}>
+          <WorkoutHeader
+            modalTitle={`Workout for ${currentDay.toLocaleDateString("en-GB")}`}
+          />
+          <CreateWorkoutModal />
+        </Modal>
+
+        <Modal ref={openEditModalRef}>
+          <WorkoutHeader
+            modalTitle={`Edit workout for ${currentDay.toLocaleDateString(
+              "en-GB"
+            )}`}
+          />
+          <CreateWorkoutModal />
+        </Modal>
       </section>
     </>
   );
