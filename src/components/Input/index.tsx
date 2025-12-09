@@ -1,4 +1,3 @@
-//import React from 'react'
 import classes from "./Input.module.css";
 
 type InputProps = {
@@ -11,6 +10,7 @@ type InputProps = {
   value?: string | number;
   error?: string;
   disabled?: boolean;
+  variation: string;
 };
 
 export default function Input({
@@ -22,8 +22,12 @@ export default function Input({
   onChange,
   value,
   error,
+  variation,
 }: InputProps) {
-  const inputVariationStyle = "";
+  let inputVariationStyle = "";
+  if (variation === "inputForModal") {
+    inputVariationStyle = classes.inputForModal;
+  }
 
   return (
     <div>

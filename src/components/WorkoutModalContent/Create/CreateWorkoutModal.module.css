@@ -1,0 +1,43 @@
+.modalSection {
+  width: 100%;
+}
+
+.modalSection label {
+  padding-left: 0;
+}
+
+.modalSection p {
+  color: var(--secondary-text);
+}
+
+.categoryMenu,
+.exercisesMenu {
+  width: 100%;
+  padding: var(--p-base);
+  font-size: var(--font-sm);
+  border: 2px solid #ccc;
+  border-radius: var(--rounded-lg);
+  background: var(--primary-text);
+  transition: 0.3s;
+  margin-top: var(--m-xs);
+}
+
+.workoutBtns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--gap-sm);
+  margin-bottom: var(--m-xl);
+}
+
+.addExerciseBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--m-xs);
+}
+
+.inputSection p {
+  color: var(--secondary-text);
+  padding-bottom: var(--p-sm);
+}

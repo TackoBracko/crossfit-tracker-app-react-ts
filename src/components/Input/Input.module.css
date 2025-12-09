@@ -33,6 +33,16 @@ label {
   font-size: var(--font-xs);
 }
 
+.inputForModal {
+  width: 100%;
+  padding: var(--p-base);
+  margin-bottom: var(--p-sm);
+  border: 2px solid #ccc;
+  border-radius: var(--rounded-lg);
+  background: var(--primary-text);
+  color: var(--tertiary-text);
+}
+
 .inputError {
   border-bottom-color: red;
 }

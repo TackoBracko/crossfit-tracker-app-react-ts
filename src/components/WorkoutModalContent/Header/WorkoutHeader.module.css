@@ -1,0 +1,6 @@
+.inputSection h2 {
+  font-size: var(--font-2xl);
+  text-align: center;
+  color: var(--secondary-text);
+  margin-bottom: var(--m-xs);
+}
