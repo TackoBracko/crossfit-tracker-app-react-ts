@@ -1,24 +1,14 @@
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: none;
-  padding: 0;
-  background: transparent;
-}
-
-.modal::backdrop {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-}
-
 .modalWrapper {
   position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: var(--p-base);
+  overflow: visible;
 }
 
 .modalContent {
@@ -27,9 +17,9 @@
   flex-direction: column;
   align-items: stretch;
   gap: var(--gap-lg);
-  width: 100%;
+  width: var(--font-semibold);
   max-width: 480px;
-  max-height: calc(100vh - 64px);
+  max-height: calc(100vh - 32px);
   overflow-y: auto;
   overflow-x: hidden;
   padding: var(--p-gap);
@@ -41,4 +31,12 @@
 
 .modalContent::-webkit-scrollbar {
   display: none;
+}
+
+.modalContent {
+  scrollbar-width: none;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(2px);
 }
