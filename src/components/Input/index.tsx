@@ -10,7 +10,7 @@ type InputProps = {
   value?: string | number;
   error?: string;
   disabled?: boolean;
-  variation: string;
+  variation?: string;
 };
 
 export default function Input({
