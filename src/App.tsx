@@ -20,6 +20,7 @@ import Calendar from "./pages/Calendar/index.tsx";
 import { AuthProvider } from "./components/Context/AuthContext";
 import { ProtectedRoutes, PublicRoutes } from "./components/Context/AuthRoutes";
 import { UserDataProvider } from "./components/Context/UserContext";
+import { WorkoutProvider } from "./Context/WorkoutContext.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -62,7 +63,9 @@ function App() {
   return (
     <AuthProvider>
       <UserDataProvider>
-        <RouterProvider router={router} />
+        <WorkoutProvider>
+          <RouterProvider router={router} />
+        </WorkoutProvider>
       </UserDataProvider>
     </AuthProvider>
   );

@@ -1,4 +1,3 @@
-//import React from 'react'
 import classes from "./Button.module.css";
 
 type ButtonProps = {
@@ -8,7 +7,7 @@ type ButtonProps = {
   iconRight?: React.ReactElement;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
-  type?: string;
+  type?: "button" | "submit";
 };
 
 export default function Button({
@@ -18,6 +17,7 @@ export default function Button({
   iconRight,
   onClick,
   className,
+  type = "button",
 }: ButtonProps) {
   let variationStyleBtn = "";
 
@@ -33,6 +33,7 @@ export default function Button({
 
   return (
     <button
+      type={type}
       className={
         variation === "tertiary"
           ? `${classes.tertiaryBtn}`

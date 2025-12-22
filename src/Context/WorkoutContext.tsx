@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 //vjezba
-interface ExerciseProps {
+export interface ExerciseProps {
   id: number;
   name: string;
   categoryId: number;
@@ -12,14 +12,14 @@ interface ExerciseProps {
 
   sets: number;
   reps: number;
-  weight: number;
+  weight: string;
   work: number;
   rest: number;
   hasWeight: boolean;
 }
 
 //trening
-interface WorkoutProps {
+export interface WorkoutProps {
   id: string;
   title: string;
   exercises: ExerciseProps[];
@@ -28,24 +28,29 @@ interface WorkoutProps {
 }
 
 //treninzi za jedan datum
-interface WorkoutsForDateProps {
+export interface WorkoutsForDateProps {
   workout: WorkoutProps[];
 }
 
 //svitrennzi
-interface AllWorkouts {
+export interface AllWorkouts {
   [date: string]: WorkoutsForDateProps;
 }
 
 //za context
-interface WorkoutContextProps {
+export interface WorkoutContextProps {
   allWorkouts: AllWorkouts;
   createWorkout: (currentDate: string, workouts: WorkoutsForDateProps) => void;
   deleteWorkout: (currentDate: string, id: string) => void;
   editWorkout: (currentDate: string, updatedWorkout: WorkoutProps) => void;
 }
 
-export const WorkoutContext = createContext<WorkoutContextProps | null>(null);
+export const WorkoutContext = createContext<WorkoutContextProps>({
+  allWorkouts: {},
+  createWorkout: () => {},
+  deleteWorkout: () => {},
+  editWorkout: () => {},
+});
 
 export const WorkoutProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -76,6 +81,8 @@ export const WorkoutProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const deleteWorkout = (currentDate: string, id: string) => {
     setAllWorkouts((prev) => {
+      if (!prev[currentDate]) return prev;
+
       const updatedWorkoutList = prev[currentDate].workout.filter(
         (training) => training.id !== id
       );
@@ -94,15 +101,19 @@ export const WorkoutProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const editWorkout = (currentDate: string, updatedWorkout: WorkoutProps) => {
-    setAllWorkouts((prev) => ({
-      ...prev,
-      [currentDate]: {
-        ...prev[currentDate],
-        workout: prev[currentDate].workout.map((workout) =>
-          workout.id === updatedWorkout.id ? updatedWorkout : workout
-        ),
-      },
-    }));
+    setAllWorkouts((prev) => {
+      if (!prev[currentDate]) return prev;
+
+      return {
+        ...prev,
+        [currentDate]: {
+          ...prev[currentDate],
+          workout: prev[currentDate].workout.map((workout) =>
+            workout.id === updatedWorkout.id ? updatedWorkout : workout
+          ),
+        },
+      };
+    });
   };
 
   return (

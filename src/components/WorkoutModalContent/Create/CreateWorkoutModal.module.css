@@ -41,3 +41,22 @@
   color: var(--secondary-text);
   padding-bottom: var(--p-sm);
 }
+
+.exercisePreview {
+  width: 100%;
+  padding: var(--p-base);
+  font-size: var(--font-sm);
+  border: 2px solid #ccc;
+  border-radius: var(--rounded-lg);
+  background: var(--primary-text);
+  transition: 0.3s;
+  margin-top: var(--m-sm);
+  max-height: 240px;
+  overflow: auto;
+}
+
+.errorText {
+  color: var(--tertiary-btn-text);
+  text-align: center;
+  font-weight: var(--font-normal);
+}
