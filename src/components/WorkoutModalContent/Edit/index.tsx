@@ -1,9 +1,13 @@
-import classes from "../Create/CreateContentModal.module.css";
+import classes from "../Create/CreateWorkoutModal.module.css";
 import Button from "../../Button";
 import Input from "../../Input";
 import { crossfitData } from "../../../Data/Exercises";
 
-export default function EditWorkoutModal() {
+interface CalendarProps {
+  closeModal: () => void;
+}
+
+export default function EditWorkoutModal({ closeModal }: CalendarProps) {
   return (
     <>
       <div className={classes.modalSection}>
@@ -81,7 +85,9 @@ export default function EditWorkoutModal() {
 
       <div className={classes.workoutBtns}>
         <Button variation="primary">Save changes</Button>
-        <Button variation="quaternary">Cancel</Button>
+        <Button variation="quaternary" onClick={closeModal}>
+          Cancel
+        </Button>
       </div>
     </>
   );

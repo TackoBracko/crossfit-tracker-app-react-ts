@@ -3,9 +3,15 @@ import Input from "../../Input";
 
 interface WorkoutHeaderProps {
   modalTitle: string;
+  workoutTitle: string;
+  setWorkoutTitle: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function WorkoutHeader({ modalTitle }: WorkoutHeaderProps) {
+export default function WorkoutHeader({
+  modalTitle,
+  workoutTitle,
+  setWorkoutTitle,
+}: WorkoutHeaderProps) {
   return (
     <>
       <div className={classes.inputSection}>
@@ -16,8 +22,10 @@ export default function WorkoutHeader({ modalTitle }: WorkoutHeaderProps) {
             type="text"
             label="Title of Workout"
             variation="inputForModal"
-            //value={}
-            //onChange={}
+            value={workoutTitle}
+            onChange={(e) => {
+              setWorkoutTitle(e.target.value);
+            }}
           />
         </div>
       </div>

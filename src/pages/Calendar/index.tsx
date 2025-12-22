@@ -8,18 +8,22 @@ import type { ModalRef } from "../../components/Modal";
 import Modal from "../../components/Modal";
 import WorkoutHeader from "../../components/WorkoutModalContent/Header";
 import LayoutForModal from "../../components/Modal/Layout";
+import EditWorkoutModal from "../../components/WorkoutModalContent/Edit";
 
 export default function Calendar() {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [currentDay, setCurrentDay] = useState(new Date());
-  const [selectedDay, setSelectedDay] = useState<Date | string>("");
   const openCreateModalRef = useRef<ModalRef>(null);
   const openEditModalRef = useRef<ModalRef>(null);
+  const [workoutTitle, setWorkoutTitle] = useState("");
 
   const changeCurrentDay = (day: CalendarDay) => {
     const newDate = new Date(day.year, day.month, day.number);
+
+    const selectedDay = `${newDate.getDate()}_${
+      newDate.getMonth() + 1
+    }_${newDate.getFullYear()}`;
     setCurrentDay(newDate);
-    setSelectedDay(newDate);
     openCreateModalRef.current?.open();
     console.log(selectedDay, "Create Modal is open");
   };
@@ -34,6 +38,18 @@ export default function Calendar() {
     setCurrentDay(
       (prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1)
     );
+  };
+
+  const closeCreateModal = () => {
+    if (openCreateModalRef.current) {
+      openCreateModalRef.current.close();
+    }
+  };
+
+  const closeEditModal = () => {
+    if (openEditModalRef.current) {
+      openEditModalRef.current.close();
+    }
   };
 
   return (
@@ -59,22 +75,31 @@ export default function Calendar() {
         <Modal ref={openCreateModalRef}>
           <LayoutForModal>
             <WorkoutHeader
+              workoutTitle={workoutTitle}
+              setWorkoutTitle={setWorkoutTitle}
               modalTitle={`Workout for ${currentDay.toLocaleDateString(
                 "en-GB"
               )}`}
             />
-            <CreateWorkoutModal />
+            <CreateWorkoutModal
+              closeModal={closeCreateModal}
+              workoutTitle={workoutTitle}
+              setWorkoutTitle={setWorkoutTitle}
+              currentDate={currentDay.toLocaleDateString("en-GB")}
+            />
           </LayoutForModal>
         </Modal>
 
         <Modal ref={openEditModalRef}>
           <LayoutForModal>
             <WorkoutHeader
+              workoutTitle={workoutTitle}
+              setWorkoutTitle={setWorkoutTitle}
               modalTitle={`Edit workout for ${currentDay.toLocaleDateString(
                 "en-GB"
               )}`}
             />
-            <CreateWorkoutModal />
+            <EditWorkoutModal closeModal={closeEditModal} />
           </LayoutForModal>
         </Modal>
       </section>
