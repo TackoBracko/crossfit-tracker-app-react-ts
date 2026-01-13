@@ -1,7 +1,7 @@
 import classes from "../Create/CreateWorkoutModal.module.css";
-import Button from "../../Button";
-import Input from "../../Input";
-import { crossfitData } from "../../../Data/Exercises";
+import Button from "../../../Button";
+import Input from "../../../Input";
+import { crossfitData } from "../../../../Data/Exercises";
 
 interface CalendarProps {
   closeModal: () => void;

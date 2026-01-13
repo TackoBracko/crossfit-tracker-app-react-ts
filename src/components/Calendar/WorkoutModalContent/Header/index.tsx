@@ -1,5 +1,5 @@
 import classes from "./WorkoutHeader.module.css";
-import Input from "../../Input";
+import Input from "../../../Input";
 
 interface WorkoutHeaderProps {
   modalTitle: string;

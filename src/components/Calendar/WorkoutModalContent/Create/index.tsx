@@ -1,14 +1,14 @@
 import classes from "./CreateWorkoutModal.module.css";
-import Input from "../../Input";
-import Button from "../../Button";
-import { crossfitData } from "../../../Data/Exercises";
+import Input from "../../../Input";
+import Button from "../../../Button";
+import { crossfitData } from "../../../../Data/Exercises";
 import { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import {
   WorkoutContext,
   type ExerciseProps,
   type WorkoutsForDateProps,
-} from "../../../Context/WorkoutContext";
+} from "../../../../Context/WorkoutContext";
 
 interface Metrics {
   sets: string;
@@ -64,7 +64,6 @@ export default function CreateWorkoutModal({
   setWorkoutTitle,
 }: CalendarProps) {
   const { createWorkout } = useContext(WorkoutContext);
-  //const [workoutTitle, setWorkoutTitle] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [exercise, setExercise] = useState<string>("");
   const [exercisesList, setExercisesList] = useState<ExerciseInWorkoutProps[]>(
@@ -163,6 +162,8 @@ export default function CreateWorkoutModal({
       work: "",
       rest: "",
     });
+    setExercise("");
+    setHasWeight(false);
   };
 
   const workoutBuild = (

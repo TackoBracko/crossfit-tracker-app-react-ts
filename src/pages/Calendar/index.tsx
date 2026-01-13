@@ -1,21 +1,31 @@
 import classes from "./Calendar.module.css";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import CalendarHeader from "../../components/Calendar/Header";
-import CalendarComponent from "../../components/Calendar/Component";
-import CreateWorkoutModal from "../../components/WorkoutModalContent/Create";
+import DayPicker from "../../components/Calendar/DayPicker";
+import CreateWorkoutModal from "../../components/Calendar/WorkoutModalContent/Create";
 import type { CalendarDay } from "../../Data/Calendar/types";
 import type { ModalRef } from "../../components/Modal";
 import Modal from "../../components/Modal";
-import WorkoutHeader from "../../components/WorkoutModalContent/Header";
+import WorkoutHeader from "../../components/Calendar/WorkoutModalContent/Header";
 import LayoutForModal from "../../components/Modal/Layout";
-import EditWorkoutModal from "../../components/WorkoutModalContent/Edit";
+import EditWorkoutModal from "../../components/Calendar/WorkoutModalContent/Edit";
+import { WorkoutContext } from "../../Context/WorkoutContext";
+import WorkoutsForDay from "../../components/Calendar/WorkoutsForDay";
 
 export default function Calendar() {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [currentDay, setCurrentDay] = useState(new Date());
+  const [workoutTitle, setWorkoutTitle] = useState("");
+
   const openCreateModalRef = useRef<ModalRef>(null);
   const openEditModalRef = useRef<ModalRef>(null);
-  const [workoutTitle, setWorkoutTitle] = useState("");
+
+  const { allWorkouts } = useContext(WorkoutContext);
+
+  const currentDate = `${currentDay.getDate()}_${
+    currentDay.getMonth() + 1
+  }_${currentDay.getFullYear()}`;
+  const dateHasWorkout = allWorkouts[currentDate];
 
   const changeCurrentDay = (day: CalendarDay) => {
     const newDate = new Date(day.year, day.month, day.number);
@@ -24,8 +34,11 @@ export default function Calendar() {
       newDate.getMonth() + 1
     }_${newDate.getFullYear()}`;
     setCurrentDay(newDate);
-    openCreateModalRef.current?.open();
-    console.log(selectedDay, "Create Modal is open");
+
+    if (!allWorkouts[selectedDay]) {
+      console.log(selectedDay, "Create Modal is open");
+      openCreateModalRef.current?.open();
+    }
   };
 
   const nextMonth = () => {
@@ -40,11 +53,23 @@ export default function Calendar() {
     );
   };
 
+  const openCreateModal = () => {
+    if (openCreateModalRef.current) {
+      openCreateModalRef.current.open();
+    }
+  };
+
   const closeCreateModal = () => {
     if (openCreateModalRef.current) {
       openCreateModalRef.current.close();
     }
   };
+
+  /*const openEditModal = () => {
+    if (openEditModalRef.current) {
+      openEditModalRef.current.open();
+    }
+  };*/
 
   const closeEditModal = () => {
     if (openEditModalRef.current) {
@@ -67,7 +92,7 @@ export default function Calendar() {
           })}
         </div>
 
-        <CalendarComponent
+        <DayPicker
           currentDay={currentDay}
           changeCurrentDay={changeCurrentDay}
         />
@@ -85,7 +110,7 @@ export default function Calendar() {
               closeModal={closeCreateModal}
               workoutTitle={workoutTitle}
               setWorkoutTitle={setWorkoutTitle}
-              currentDate={currentDay.toLocaleDateString("en-GB")}
+              currentDate={currentDate}
             />
           </LayoutForModal>
         </Modal>
@@ -102,6 +127,13 @@ export default function Calendar() {
             <EditWorkoutModal closeModal={closeEditModal} />
           </LayoutForModal>
         </Modal>
+
+        {dateHasWorkout && (
+          <WorkoutsForDay
+            openCreateModal={openCreateModal}
+            workouts={dateHasWorkout}
+          />
+        )}
       </section>
     </>
   );
