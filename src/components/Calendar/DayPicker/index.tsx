@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import type { CalendarComponentProps } from "../../../Data/Calendar/types";
-import classes from "./CalendarComponent.module.css";
+import classes from "./DayPicker.module.css";
+import { WorkoutContext } from "../../../Context/WorkoutContext";
 
-export default function CalendarComponent({
+export default function DayPicker({
   currentDay,
   changeCurrentDay,
 }: CalendarComponentProps) {
@@ -14,6 +16,7 @@ export default function CalendarComponent({
   const weekdayOfFirstDay = firstDayOfMonth.getDay();
   const currentDays = [];
   const todayDate = new Date();
+  const { allWorkouts } = useContext(WorkoutContext);
 
   for (let day = 0; day < 42; day++) {
     if (day === 0 && weekdayOfFirstDay === 0) {
@@ -39,12 +42,16 @@ export default function CalendarComponent({
   return (
     <div className={classes.dates}>
       {currentDays.map((day, index) => {
+        const currentDate = `${day.number}_${day.month + 1}_${day.year}`;
+        const dayHasWorkout = allWorkouts[currentDate];
         return (
           <div
             key={index}
             className={`${classes.day} ${
               day.currentMonth ? classes.allDays : ""
-            } ${day.selected ? classes.currentDay : ""} `}
+            } ${day.selected ? classes.currentDay : ""} ${
+              dayHasWorkout && day.currentMonth ? classes.dayWithWorkout : ""
+            } `}
             onClick={() => changeCurrentDay(day)}
           >
             <p>{day.number}</p>

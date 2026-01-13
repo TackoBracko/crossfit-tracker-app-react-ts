@@ -22,10 +22,15 @@
   border-radius: var(--rounded-3xl);
 }
 
+.allDays {
+  color: var(--primary-text);
+}
+
 .currentDay {
   background-color: #b4a0ff;
 }
 
-.allDays {
-  color: var(--primary-text);
+.dayWithWorkout {
+  background: var(--secondary-text);
+  color: var(--tertiary-text);
 }
