@@ -34,3 +34,9 @@
   background: var(--secondary-text);
   color: var(--tertiary-text);
 }
+
+@media (min-width: 1024px) {
+  .day {
+    font-size: var(--font-2xl);
+  }
+}
