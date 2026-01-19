@@ -55,7 +55,7 @@ export default function CreateWorkoutModal({
       </div>
 
       <div className={classes.modalSection}>
-        <p>Exercise for </p>
+        <p>Exercise for: {category} </p>
         <select
           className={classes.exercisesMenu}
           value={exercise}
@@ -85,7 +85,7 @@ export default function CreateWorkoutModal({
 
       {exercise && (
         <div className={classes.inputSection}>
-          <p>Selected exercise:</p>
+          <p>Selected exercise: {exercise}</p>
           <div className={classes.modalInput}>
             <Input
               name="sets"
