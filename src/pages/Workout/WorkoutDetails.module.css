@@ -1,0 +1,173 @@
+.detailsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  margin-top: var(--m-3xl);
+  gap: 8px;
+}
+
+.detailsHeader h1 {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.workoutDetailsSection {
+  padding: 0 16px;
+  margin: 16px 0;
+}
+
+.workoutDetailsSection h4 {
+  font-size: var(--font-xl);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.workoutDetailsSection h4 span {
+  color: var(--secondary-text);
+  text-transform: lowercase;
+  font-size: var(--font-base);
+}
+
+.exercisesList {
+  border-bottom: 1px solid var(--primary-text);
+  padding-bottom: 20px;
+}
+
+.exerciseLink:hover {
+  color: var(--secondary-text);
+}
+
+.exercisePic {
+  border-radius: 16px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  padding-top: 8px;
+}
+
+.exerciseItem {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 16px 8px;
+  margin-bottom: 8px;
+  background: var(--secondary-background-btn);
+}
+
+.startWorkoutLink {
+  display: block;
+  width: 100%;
+}
+
+.startWorkoutBtn {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 70px;
+  padding: 0 16px;
+}
+
+.centerLoader {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid #ddd;
+  border-top: 4px solid var(--primary-btn);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 481px) {
+  .exerciseItem {
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .exercisePic {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .detailsHeader {
+    margin-top: var(--m-4xl);
+  }
+  .detailsHeader h1 {
+    font-size: var(--font-2xl);
+  }
+
+  .workoutDetailsSection h4 {
+    font-size: var(--font-2xl);
+  }
+
+  .exercisesList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .exercisePic {
+    width: 140px;
+  }
+
+  .startWorkoutBtn {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .detailsHeader {
+    justify-content: flex-start;
+    gap: var(--gap-sm);
+    max-width: 1100px;
+    margin-top: var(--m-5xl);
+    padding: 0 32px;
+  }
+
+  .workoutDetailsSection {
+    max-width: 1100px;
+    margin: 32px auto;
+    padding: 0 32px;
+  }
+
+  .workoutDetailsSection ul li {
+    font-size: var(--font-xl);
+  }
+
+  .exercisesList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .exerciseItem {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: var(--font-xl);
+  }
+
+  .exercisePic {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+  }
+}

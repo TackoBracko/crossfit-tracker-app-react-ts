@@ -32,7 +32,7 @@ export interface WorkoutsForDateProps {
   workout: WorkoutProps[];
 }
 
-//svitrennzi
+//svi trennzi
 export interface AllWorkouts {
   [date: string]: WorkoutsForDateProps;
 }
@@ -40,22 +40,29 @@ export interface AllWorkouts {
 //za context
 export interface WorkoutContextProps {
   allWorkouts: AllWorkouts;
+  workoutDetails: WorkoutProps | null;
   createWorkout: (currentDate: string, workouts: WorkoutsForDateProps) => void;
   deleteWorkout: (currentDate: string, id: string) => void;
   changeWorkout: (currentDate: string, updatedWorkout: WorkoutProps) => void;
+  addWorkoutToContext: (workout: WorkoutProps) => void;
 }
 
 export const WorkoutContext = createContext<WorkoutContextProps>({
   allWorkouts: {},
+  workoutDetails: null,
   createWorkout: () => {},
   deleteWorkout: () => {},
   changeWorkout: () => {},
+  addWorkoutToContext: () => {},
 });
 
 export const WorkoutProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [allWorkouts, setAllWorkouts] = useState<AllWorkouts>({});
+  const [workoutDetails, setWorkoutDetails] = useState<WorkoutProps | null>(
+    null
+  );
 
   const createWorkout = (
     currentDate: string,
@@ -114,11 +121,26 @@ export const WorkoutProvider: React.FC<{ children: React.ReactNode }> = ({
         },
       };
     });
+
+    setWorkoutDetails((prev) =>
+      prev && prev.id === updatedWorkout.id ? updatedWorkout : prev
+    );
+  };
+
+  const addWorkoutToContext = (workout: WorkoutProps) => {
+    setWorkoutDetails(workout);
   };
 
   return (
     <WorkoutContext.Provider
-      value={{ allWorkouts, createWorkout, changeWorkout, deleteWorkout }}
+      value={{
+        allWorkouts,
+        workoutDetails,
+        createWorkout,
+        changeWorkout,
+        deleteWorkout,
+        addWorkoutToContext,
+      }}
     >
       {children}
     </WorkoutContext.Provider>

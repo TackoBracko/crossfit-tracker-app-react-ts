@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { UserDataContext } from "../../../../components/Context/UserContext";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 
-export default function Edit() {
+export default function EditProfile() {
   const { user, handleUserData } = useContext(UserDataContext);
   const navigate = useNavigate();
 

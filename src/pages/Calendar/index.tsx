@@ -32,8 +32,13 @@ export default function Calendar() {
   const createModalRef = useRef<ModalRef>(null);
   const editModalRef = useRef<ModalRef>(null);
 
-  const { allWorkouts, createWorkout, changeWorkout, deleteWorkout } =
-    useContext(WorkoutContext);
+  const {
+    allWorkouts,
+    createWorkout,
+    changeWorkout,
+    deleteWorkout,
+    addWorkoutToContext,
+  } = useContext(WorkoutContext);
 
   const [currentDay, setCurrentDay] = useState(new Date());
   const currentDate = `${currentDay.getDate()}_${
@@ -316,7 +321,7 @@ export default function Calendar() {
     };
 
     changeWorkout(currentDate, updatedWorkout);
-    //WorkoutContext(updatedWorkout);
+    addWorkoutToContext(updatedWorkout);
     setEditWorkout(null);
     closeEditModal();
     clearModal();
@@ -517,6 +522,7 @@ export default function Calendar() {
             workoutDate={currentDate}
             editWorkout={handleEditWorkout}
             deleteWorkout={handleDeleteWorkout}
+            addWorkoutToContext={addWorkoutToContext}
           />
         )}
       </section>

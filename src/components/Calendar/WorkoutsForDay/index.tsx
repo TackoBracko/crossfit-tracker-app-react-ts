@@ -13,6 +13,7 @@ interface DayWorkoutProps {
   workoutDate: string;
   editWorkout: (workout: WorkoutProps) => void;
   deleteWorkout: (id: string) => void;
+  addWorkoutToContext: (workout: WorkoutProps) => void;
 }
 
 export default function WorkoutsForDay({
@@ -21,6 +22,7 @@ export default function WorkoutsForDay({
   workoutDate,
   editWorkout,
   deleteWorkout,
+  addWorkoutToContext,
 }: DayWorkoutProps) {
   return (
     <>
@@ -57,7 +59,11 @@ export default function WorkoutsForDay({
               </ul>
             </div>
 
-            <NavLink to="">
+            <NavLink
+              to={`/workouts/${workout.id}`}
+              key={workout.id}
+              onClick={() => addWorkoutToContext(workout)}
+            >
               <Button variation="primary">Start workout</Button>
             </NavLink>
           </div>
