@@ -2,294 +2,40 @@ import classes from "./CreateWorkoutModal.module.css";
 import Input from "../../../Input";
 import Button from "../../../Button";
 import { crossfitData } from "../../../../Data/Exercises";
-import { useContext, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import {
-  WorkoutContext,
-  type ExerciseProps,
-  type WorkoutsForDateProps,
-} from "../../../../Context/WorkoutContext";
+  type ExerciseInWorkoutProps,
+  type Metrics,
+} from "../../../../Data/Calendar/modal";
 
-interface Metrics {
-  sets: string;
-  reps: string;
-  weight: string;
-  work: string;
-  rest: string;
-}
-
-interface NoteProps {
-  name: string;
-  sets: number;
-  reps: number;
-  weight: string;
-  work: number;
-  rest: number;
-  hasWeight: boolean;
-}
-
-interface ExerciseInWorkoutProps {
-  id: string;
-  name: string;
-  sets: number;
-  reps: number;
-  weight: string;
-  work: number;
-  rest: number;
-  hasWeight: boolean;
-  note: string;
-}
-
-interface ExerciseInfo {
-  id: number;
-  name: string;
-  categoryId: number;
+interface CreateModalProps {
   category: string;
-  subExercise: number | null;
-  picture: string;
+  categorySelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  exercise: string;
+  exerciseSelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  metrics: Metrics;
+  metricsSelect: (e: React.ChangeEvent<HTMLInputElement>) => void;
   hasWeight: boolean;
-}
-
-interface CalendarProps {
+  exercisesList: ExerciseInWorkoutProps[];
+  addExerciseToList: () => void;
+  createWorkout: () => void;
   closeModal: () => void;
-  currentDate: string;
-  workoutTitle: string;
-  setWorkoutTitle: React.Dispatch<React.SetStateAction<string>>;
+  error: { title: boolean; workoutPlan: boolean };
 }
 
 export default function CreateWorkoutModal({
+  category,
+  categorySelect,
+  exercise,
+  exerciseSelect,
+  metrics,
+  metricsSelect,
+  hasWeight,
+  addExerciseToList,
+  exercisesList,
+  createWorkout,
   closeModal,
-  currentDate,
-  workoutTitle,
-  setWorkoutTitle,
-}: CalendarProps) {
-  const { createWorkout } = useContext(WorkoutContext);
-  const [category, setCategory] = useState<string>("");
-  const [exercise, setExercise] = useState<string>("");
-  const [exercisesList, setExercisesList] = useState<ExerciseInWorkoutProps[]>(
-    []
-  );
-  const [metrics, setMetrics] = useState<Metrics>({
-    sets: "",
-    reps: "",
-    weight: "",
-    work: "",
-    rest: "",
-  });
-  const [hasWeight, setHasWeight] = useState<boolean>(false);
-  const [error, setError] = useState<{ title: boolean; workoutplan: boolean }>({
-    title: false,
-    workoutplan: false,
-  });
-
-  //category and exercise
-  const handleCategorySelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCategory(e.target.value);
-    setExercise("");
-    setHasWeight(false);
-    setMetrics({ sets: "", reps: "", weight: "", work: "", rest: "" });
-  };
-
-  const handleExerciseSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedExercise = e.target.value;
-    setExercise(selectedExercise);
-
-    const exerciseSelect = crossfitData
-      .flatMap((category) =>
-        category.exercises.flatMap((exercise) =>
-          exercise.subExercises ? exercise.subExercises : [exercise]
-        )
-      )
-      .find((ex) => ex.name === selectedExercise);
-    setHasWeight(exerciseSelect && exerciseSelect.hasWeight ? true : false);
-  };
-
-  const handleExerciseMetrics = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setMetrics((prevData) => {
-      return { ...prevData, [name]: value };
-    });
-  };
-
-  const metricsBlock = (exercise: NoteProps) => {
-    let metricsNote = exercise.name;
-
-    if (exercise.sets > 0 && exercise.reps > 0) {
-      metricsNote += ` ${exercise.sets} sets x ${exercise.reps} reps`;
-    } else if (exercise.sets > 0) {
-      metricsNote += ` ${exercise.sets} sets`;
-    } else if (exercise.reps > 0) {
-      metricsNote += ` ${exercise.reps} reps`;
-    }
-
-    if (exercise.hasWeight && exercise.weight) {
-      metricsNote += ` @ ${exercise.weight} kg`;
-    }
-    if (exercise.work) {
-      metricsNote += ` | work: ${exercise.work}s`;
-    }
-    if (exercise.rest) {
-      metricsNote += ` | rest: ${exercise.rest}s`;
-    }
-    return metricsNote;
-  };
-
-  //exercise to list
-
-  const addExerciseToList = () => {
-    const exerciseInfo: NoteProps = {
-      name: exercise,
-      sets: Number(metrics.sets) || 0,
-      reps: Number(metrics.reps) || 0,
-      weight: metrics.weight,
-      work: Number(metrics.work) || 0,
-      rest: Number(metrics.rest) || 0,
-      hasWeight: hasWeight,
-    };
-
-    const newExercise: ExerciseInWorkoutProps = {
-      id: uuidv4(),
-      ...exerciseInfo,
-      note: metricsBlock(exerciseInfo),
-    };
-
-    setExercisesList((prev) => [...prev, newExercise]);
-
-    setMetrics({
-      sets: "",
-      reps: "",
-      weight: "",
-      work: "",
-      rest: "",
-    });
-    setExercise("");
-    setHasWeight(false);
-  };
-
-  const workoutBuild = (
-    workoutTitle: string,
-    currentDate: string,
-    exercisesList: ExerciseInWorkoutProps[]
-  ) => {
-    let categoriesList: ExerciseInfo[] = [];
-
-    crossfitData.forEach((category) => {
-      const exercises = category.exercises.map((exercise) => {
-        if (exercise.subExercises) {
-          return exercise.subExercises.map((subexercise) => ({
-            id: subexercise.id,
-            name: subexercise.name,
-            categoryId: category.id,
-            category: category.title,
-            subExercise: exercise.id,
-            picture: subexercise.picture,
-            hasWeight: subexercise.hasWeight,
-          }));
-        } else {
-          return [
-            {
-              id: exercise.id,
-              name: exercise.name,
-              categoryId: category.id,
-              category: category.title,
-              subExercise: null,
-              picture: exercise.picture,
-              hasWeight: exercise.hasWeight,
-            },
-          ];
-        }
-      });
-
-      categoriesList = categoriesList.concat(...exercises);
-    });
-
-    const selectedExercisesData: ExerciseProps[] = exercisesList.flatMap(
-      (exercise) => {
-        const exerciseData = categoriesList.find(
-          (ex) => ex.name === exercise.name
-        );
-        if (!exerciseData) return [];
-
-        return [
-          {
-            id: exerciseData.id,
-            name: exerciseData.name,
-            categoryId: exerciseData.categoryId,
-            category: exerciseData.category,
-            subExercise: exerciseData.subExercise,
-            picture: exerciseData.picture,
-            sets: exercise.sets,
-            reps: exercise.reps,
-            weight: exercise.weight,
-            work: exercise.work,
-            rest: exercise.rest,
-            hasWeight: exerciseData.hasWeight,
-            note: exercise.note,
-          },
-        ];
-      }
-    );
-
-    return {
-      id: uuidv4(),
-      title: workoutTitle,
-      exercises: selectedExercisesData,
-      category: category,
-      date: currentDate,
-    };
-  };
-
-  //create workout
-
-  const handleCreateWorkout = () => {
-    const errorTitle = !workoutTitle.trim();
-    const errorWorkoutPlan = !category || exercisesList.length === 0;
-
-    if (errorTitle || errorWorkoutPlan) {
-      setError({
-        title: errorTitle,
-        workoutplan: errorWorkoutPlan,
-      });
-      return;
-    }
-
-    const newWorkout = workoutBuild(workoutTitle, currentDate, exercisesList);
-
-    const todayWorkout: WorkoutsForDateProps = {
-      workout: [newWorkout],
-    };
-
-    createWorkout(currentDate, todayWorkout);
-
-    clearModal();
-    closeModal();
-    setError({
-      title: false,
-      workoutplan: false,
-    });
-
-    console.log(currentDate, todayWorkout);
-  };
-
-  const clearModal = () => {
-    setWorkoutTitle("");
-    setCategory("");
-    setExercise("");
-    setExercisesList([]);
-    setMetrics({ sets: "", reps: "", weight: "", work: "", rest: "" });
-    setWorkoutTitle("");
-    setError({
-      title: false,
-      workoutplan: false,
-    });
-    setHasWeight(false);
-  };
-
-  const handleCancleBtn = () => {
-    clearModal();
-    closeModal();
-  };
-
+  error,
+}: CreateModalProps) {
   return (
     <>
       <div className={classes.modalSection}>
@@ -297,7 +43,7 @@ export default function CreateWorkoutModal({
         <select
           className={classes.categoryMenu}
           value={category}
-          onChange={handleCategorySelect}
+          onChange={categorySelect}
         >
           <option value="">Choose a Category</option>
           {crossfitData.map((category) => (
@@ -313,7 +59,7 @@ export default function CreateWorkoutModal({
         <select
           className={classes.exercisesMenu}
           value={exercise}
-          onChange={handleExerciseSelect}
+          onChange={exerciseSelect}
         >
           <option value="">Choose an Exercise</option>
 
@@ -347,7 +93,7 @@ export default function CreateWorkoutModal({
               label="Sets"
               variation="inputForModal"
               value={metrics.sets}
-              onChange={handleExerciseMetrics}
+              onChange={metricsSelect}
             />
 
             <Input
@@ -356,7 +102,7 @@ export default function CreateWorkoutModal({
               label="Reps/Cal"
               variation="inputForModal"
               value={metrics.reps}
-              onChange={handleExerciseMetrics}
+              onChange={metricsSelect}
             />
 
             {hasWeight && (
@@ -366,7 +112,7 @@ export default function CreateWorkoutModal({
                 label="Weight"
                 variation="inputForModal"
                 value={metrics.weight}
-                onChange={handleExerciseMetrics}
+                onChange={metricsSelect}
               />
             )}
 
@@ -376,7 +122,7 @@ export default function CreateWorkoutModal({
               label="Work Time"
               variation="inputForModal"
               value={metrics.work}
-              onChange={handleExerciseMetrics}
+              onChange={metricsSelect}
             />
 
             <Input
@@ -385,7 +131,7 @@ export default function CreateWorkoutModal({
               label="Rest Time"
               variation="inputForModal"
               value={metrics.rest}
-              onChange={handleExerciseMetrics}
+              onChange={metricsSelect}
             />
 
             <div className={classes.addExerciseBtn}>
@@ -399,7 +145,7 @@ export default function CreateWorkoutModal({
             <div>
               <ul className={classes.exercisePreview}>
                 {exercisesList.map((exercise) => (
-                  <li key={exercise.id}>{metricsBlock(exercise)}</li>
+                  <li key={exercise.id}>{exercise.note}</li>
                 ))}
               </ul>
             </div>
@@ -408,14 +154,14 @@ export default function CreateWorkoutModal({
       )}
 
       <div className={classes.workoutBtns}>
-        <Button variation="primary" type="button" onClick={handleCreateWorkout}>
+        <Button variation="primary" type="button" onClick={createWorkout}>
           Create Workout
         </Button>
-        <Button variation="quaternary" onClick={handleCancleBtn}>
+        <Button variation="quaternary" onClick={closeModal}>
           Cancel
         </Button>
       </div>
-      {error.workoutplan && (
+      {error.workoutPlan && (
         <p className={classes.errorText}>Cannot create empty workout</p>
       )}
     </>

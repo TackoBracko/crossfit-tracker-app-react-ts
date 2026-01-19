@@ -28,13 +28,19 @@
   justify-content: space-between;
   width: 100%;
   gap: var(--gap-sm);
-  margin-bottom: var(--m-xl);
+}
+
+.exerciseBtns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  margin-top: var(--m-xs);
 }
 
 .addExerciseBtn {
   display: flex;
   justify-content: flex-end;
-  margin-top: var(--m-xs);
+  margin-bottom: var(--m-xs);
 }
 
 .inputSection p {
@@ -50,13 +56,46 @@
   border-radius: var(--rounded-lg);
   background: var(--primary-text);
   transition: 0.3s;
-  margin-top: var(--m-sm);
   max-height: 240px;
   overflow: auto;
+}
+
+.exerciseItem {
+  border-bottom: 1px solid #ccc;
+  padding: var(p--xs);
 }
 
 .errorText {
   color: var(--tertiary-btn-text);
   text-align: center;
   font-weight: var(--font-normal);
+}
+
+@media (min-width: 425px) {
+  .exercisePreview {
+    padding: var(--p-exercise);
+    font-size: var(--font-base);
+  }
+
+  .exerciseBtns {
+    flex-direction: row;
+    width: 100%;
+    gap: var(--gap-sm);
+    margin-top: var(--m-xs);
+  }
+
+  .exerciseBtns button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .exercisePreview {
+    max-height: 320px;
+  }
+
+  .exerciseItem {
+    padding: var(--p-base);
+    font-size: var(--font-lg);
+  }
 }
