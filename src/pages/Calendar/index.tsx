@@ -258,7 +258,7 @@ export default function Calendar() {
 
     createWorkout(currentDate, todayWorkout);
 
-    clearModal();
+    clearCreateModal();
     closeCreateModal();
     setError({
       title: false,
@@ -317,14 +317,12 @@ export default function Calendar() {
       title: newEditedWorkout.title,
       category: category,
       exercises: newEditedWorkout.exercises,
-      //notes: newEditedWorkout.note,
     };
 
     changeWorkout(currentDate, updatedWorkout);
     addWorkoutToContext(updatedWorkout);
     setEditWorkout(null);
     closeEditModal();
-    clearModal();
     console.log(updatedWorkout);
   };
 
@@ -409,7 +407,7 @@ export default function Calendar() {
   const closeCreateModal = () => {
     if (createModalRef.current) {
       createModalRef.current.close();
-      clearModal();
+      clearCreateModal();
     }
   };
 
@@ -423,9 +421,10 @@ export default function Calendar() {
     if (editModalRef.current) {
       editModalRef.current.close();
     }
+    clearEditModal();
   };
 
-  const clearModal = () => {
+  const clearCreateModal = () => {
     setWorkoutTitle("");
     setCategory("");
     setExercise("");
@@ -436,6 +435,20 @@ export default function Calendar() {
       title: false,
       workoutPlan: false,
     });
+    setHasWeight(false);
+  };
+
+  const clearEditModal = () => {
+    setExercise("");
+    setMetrics({
+      sets: "",
+      reps: "",
+      weight: "",
+      work: "",
+      rest: "",
+    });
+    setIsEditing(false);
+    setEditingExercise(null);
     setHasWeight(false);
   };
 

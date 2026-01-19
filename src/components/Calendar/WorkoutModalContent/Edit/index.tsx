@@ -51,7 +51,7 @@ export default function EditWorkoutModal({
           value={category}
           onChange={categorySelect}
         >
-          <option>Choose a Category</option>
+          <option value="">Choose a Category</option>
           {crossfitData.map((category) => (
             <option key={category.id} value={category.title}>
               {category.title}
@@ -61,19 +61,36 @@ export default function EditWorkoutModal({
       </div>
 
       <div className={classes.modalSection}>
-        <label>Exercise for {category}</label>
+        <label>Exercise for: {category}</label>
         <select
           className={classes.exercisesMenu}
           value={exercise}
           onChange={exerciseSelect}
         >
-          <option>Choose an Exercise</option>
+          <option value="">Choose an Exercise</option>
+          {crossfitData
+            .find((cat) => cat.title === category)
+            ?.exercises.map((exercise) =>
+              exercise.subExercises ? (
+                <optgroup key={exercise.id} label={exercise.name}>
+                  {exercise.subExercises.map((subexercise) => (
+                    <option key={subexercise.id} value={subexercise.name}>
+                      {subexercise.name}
+                    </option>
+                  ))}
+                </optgroup>
+              ) : (
+                <option key={exercise.id} value={exercise.name}>
+                  {exercise.name}
+                </option>
+              )
+            )}
         </select>
       </div>
 
-      {isEditing && (
+      {exercise && (
         <div className={classes.inputSection}>
-          <p>Selected exercise:</p>
+          <p>Selected exercise: {exercise}</p>
           <div className={classes.modalInput}>
             <Input
               name="sets"
@@ -126,7 +143,7 @@ export default function EditWorkoutModal({
                 variation="primary"
                 onClick={isEditing ? saveEditedExercise : addExerciseToList}
               >
-                {isEditing ? "Add Changes" : "Add Exercise"}
+                {isEditing ? "Add changes" : "Add exercise"}
               </Button>
             </div>
           </div>
