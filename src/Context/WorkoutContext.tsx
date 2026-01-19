@@ -42,14 +42,14 @@ export interface WorkoutContextProps {
   allWorkouts: AllWorkouts;
   createWorkout: (currentDate: string, workouts: WorkoutsForDateProps) => void;
   deleteWorkout: (currentDate: string, id: string) => void;
-  editWorkout: (currentDate: string, updatedWorkout: WorkoutProps) => void;
+  changeWorkout: (currentDate: string, updatedWorkout: WorkoutProps) => void;
 }
 
 export const WorkoutContext = createContext<WorkoutContextProps>({
   allWorkouts: {},
   createWorkout: () => {},
   deleteWorkout: () => {},
-  editWorkout: () => {},
+  changeWorkout: () => {},
 });
 
 export const WorkoutProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -100,7 +100,7 @@ export const WorkoutProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  const editWorkout = (currentDate: string, updatedWorkout: WorkoutProps) => {
+  const changeWorkout = (currentDate: string, updatedWorkout: WorkoutProps) => {
     setAllWorkouts((prev) => {
       if (!prev[currentDate]) return prev;
 
@@ -118,7 +118,7 @@ export const WorkoutProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <WorkoutContext.Provider
-      value={{ allWorkouts, createWorkout, editWorkout, deleteWorkout }}
+      value={{ allWorkouts, createWorkout, changeWorkout, deleteWorkout }}
     >
       {children}
     </WorkoutContext.Provider>
