@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 import { useContext, useRef, useState } from "react";
 import CalendarHeader from "../../components/Calendar/Header";
 import DayPicker from "../../components/Calendar/DayPicker";
-import WorkoutHeader from "../../components/Calendar/WorkoutModalContent/Header";
+import WorkoutHeader from "../../components/Calendar/WorkoutModal/Header";
 import LayoutForModal from "../../components/Modal/Layout";
 import Modal from "../../components/Modal";
 import WorkoutsForDay from "../../components/Calendar/WorkoutsForDay";
-import CreateWorkoutModal from "../../components/Calendar/WorkoutModalContent/Create";
-import EditWorkoutModal from "../../components/Calendar/WorkoutModalContent/Edit";
+import CreateWorkoutModal from "../../components/Calendar/WorkoutModal/Create";
+import EditWorkoutModal from "../../components/Calendar/WorkoutModal/Edit";
 import type { CalendarDay } from "../../Data/Calendar/types";
 import type { ModalRef } from "../../components/Modal";
 import {

@@ -17,10 +17,11 @@ import ExercisesList from "./pages/Movements/Exercises/List/index.tsx";
 import Exercise from "./pages/Movements/Exercises/Exercise/index.tsx";
 import SubExercise from "./pages/Movements/Exercises/SubExercise/index.tsx";
 import Calendar from "./pages/Calendar/index.tsx";
-import WorkoutDetails from "./pages/Workout/index.tsx";
-import { AuthProvider } from "./components/Context/AuthContext";
-import { ProtectedRoutes, PublicRoutes } from "./components/Context/AuthRoutes";
-import { UserDataProvider } from "./components/Context/UserContext";
+import WorkoutDetails from "./pages/Workout/Details/index.tsx";
+import Timer from "./pages/Workout/Timer/index.tsx";
+import { AuthProvider } from "./Context/AuthContext";
+import { ProtectedRoutes, PublicRoutes } from "./Context/AuthRoutes";
+import { UserDataProvider } from "./Context/UserContext";
 import { WorkoutProvider } from "./Context/WorkoutContext.tsx";
 
 const router = createBrowserRouter(
@@ -56,6 +57,7 @@ const router = createBrowserRouter(
           element={<SubExercise />}
         />
         <Route path="/edit" element={<EditProfile />} />
+        <Route path="/timer" element={<Timer />} />
       </Route>
     </>
   )

@@ -25,6 +25,7 @@ export interface WorkoutProps {
   exercises: ExerciseProps[];
   category: string;
   date: string;
+  picture: string;
 }
 
 //treninzi za jedan datum

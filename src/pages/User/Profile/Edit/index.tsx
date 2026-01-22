@@ -3,7 +3,7 @@ import Button from "../../../../components/Button";
 import Input from "../../../../components/Input";
 import { NavLink, Form, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { UserDataContext } from "../../../../components/Context/UserContext";
+import { UserDataContext } from "../../../../Context/UserContext";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 
 export default function EditProfile() {
