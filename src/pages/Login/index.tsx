@@ -3,8 +3,8 @@ import { Form, useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../components/Context/AuthContext";
-import { UserDataContext } from "../../components/Context/UserContext";
+import { AuthContext } from "../../Context/AuthContext";
+import { UserDataContext } from "../../Context/UserContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");

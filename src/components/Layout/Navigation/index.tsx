@@ -1,7 +1,7 @@
 import classes from "./Navigation.module.css";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../Context/AuthContext";
+import { AuthContext } from "../../../Context/AuthContext";
 import { Home, Dumbbell, Calendar, Utensils, User } from "lucide-react";
 
 export default function Navigation() {

@@ -2,8 +2,8 @@ import classes from "./Profile.module.css";
 import Button from "../../../components/Button";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { AuthContext } from "../../../components/Context/AuthContext";
-import { UserDataContext } from "../../../components/Context/UserContext";
+import { AuthContext } from "../../../Context/AuthContext";
+import { UserDataContext } from "../../../Context/UserContext";
 
 export default function Profile() {
   const { user } = useContext(UserDataContext);

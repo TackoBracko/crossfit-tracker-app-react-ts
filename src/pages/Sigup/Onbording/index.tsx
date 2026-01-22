@@ -3,8 +3,8 @@ import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import { Form, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { UserDataContext } from "../../../components/Context/UserContext";
-import { AuthContext } from "../../../components/Context/AuthContext";
+import { UserDataContext } from "../../../Context/UserContext";
+import { AuthContext } from "../../../Context/AuthContext";
 
 export default function Onbording() {
   const { user, handleUserData } = useContext(UserDataContext);

@@ -1,9 +1,9 @@
 import classes from "./WorkoutDetails.module.css";
-import Button from "../../components/Button";
+import Button from "../../../components/Button";
 import { NavLink } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useContext } from "react";
-import { WorkoutContext } from "../../Context/WorkoutContext";
+import { WorkoutContext } from "../../../Context/WorkoutContext";
 
 export default function WorkoutDetails() {
   const { workoutDetails } = useContext(WorkoutContext);
@@ -11,7 +11,7 @@ export default function WorkoutDetails() {
     return (
       <div className={classes.centerLoader}>
         <div className={classes.spiner}></div>
-        <p>Worming up...</p>;
+        <p>Worming up...</p>
       </div>
     );
   }
@@ -83,7 +83,7 @@ export default function WorkoutDetails() {
       </section>
 
       <div className={classes.startWorkoutBtn}>
-        <NavLink to="" className={classes.startWorkoutLink}>
+        <NavLink to="/timer" className={classes.startWorkoutLink}>
           <Button variation="primary">Start Workout</Button>
         </NavLink>
       </div>

@@ -1,0 +1,19 @@
+.timerWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.exerciseMetrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px;
+}
+
+.metrics {
+  flex: 1 1 100%;
+  border: 1px solid var(--primary-background-btn);
+  padding: 8px;
+  border-radius: 16px;
+  text-align: center;
+}
