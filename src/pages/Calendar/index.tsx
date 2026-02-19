@@ -10,21 +10,21 @@ import Modal from "../../components/Modal";
 import WorkoutsForDay from "../../components/Calendar/WorkoutsForDay";
 import CreateWorkoutModal from "../../components/Calendar/WorkoutModal/Create";
 import EditWorkoutModal from "../../components/Calendar/WorkoutModal/Edit";
-import type { CalendarDay } from "../../Data/Calendar/types";
+import type { CalendarDay } from "../../Data/Types/calendar";
 import type { ModalRef } from "../../components/Modal";
+import { WorkoutContext } from "../../Context/WorkoutContext";
 import {
-  WorkoutContext,
   type ExerciseProps,
   type WorkoutsForDateProps,
   type WorkoutProps,
-} from "../../Context/WorkoutContext";
+} from "../../Data/Types/workout";
 
 import {
   type Metrics,
   type NoteProps,
   type ExerciseInWorkoutProps,
   type ExerciseInfo,
-} from "../../Data/Calendar/modal";
+} from "../../Data/Types/modal";
 
 export default function Calendar() {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

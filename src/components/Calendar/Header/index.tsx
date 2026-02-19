@@ -1,4 +1,4 @@
-import type { CalendarHeaderProps } from "../../../Data/Calendar/types";
+import type { CalendarHeaderProps } from "../../../Data/Types/calendar";
 import classes from "./CalendarHeader.module.css";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 

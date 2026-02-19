@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import type { CalendarComponentProps } from "../../../Data/Calendar/types";
+import type { CalendarComponentProps } from "../../../Data/Types/calendar";
 import classes from "./DayPicker.module.css";
 import { WorkoutContext } from "../../../Context/WorkoutContext";
 
