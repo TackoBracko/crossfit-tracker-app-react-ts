@@ -5,7 +5,7 @@ import { crossfitData } from "../../../../Data/Exercises";
 import {
   type ExerciseInWorkoutProps,
   type Metrics,
-} from "../../../../Data/Calendar/modal";
+} from "../../../../Data/Types/modal";
 
 interface EditModalProps {
   category: string;
